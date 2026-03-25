@@ -50,8 +50,8 @@ export const Footer = () => {
             <p className="order-2 text-sm font-medium tracking-tight text-muted-foreground md:order-1">
               &copy; {currentYear} —{" "}
               {lang === "en"
-                ? `Crafted with passion by ${profileData.name}.`
-                : `Creado con pasión por ${profileData.name}.`}
+                ? `Crafted by ${profileData.name}.`
+                : `Creado por ${profileData.name}.`}
             </p>
 
             <div className="order-1 flex items-center gap-6 md:order-2">
