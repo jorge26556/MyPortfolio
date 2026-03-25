@@ -1,7 +1,6 @@
 export interface SocialLink {
-  platform: 'github' | 'linkedin' | 'twitter' | 'dribbble' | 'behance' | string;
+  platform: string;
   url: string;
-  icon?: string;
 }
 
 export interface Profile {
@@ -12,27 +11,25 @@ export interface Profile {
   email: string;
   location: string;
   socials: SocialLink[];
-  resumeUrl?: string;
+  resumeUrl: string;
 }
 
 export const profileData: Profile = {
-  name: "John Doe",
-  role: "Full Stack Developer",
-  bio: "Passionate developer crafting digital experiences.",
-  avatarUrl: "/images/avatar.jpg",
-  email: "hello@johndoe.com",
-  location: "New York, USA",
+  name: "Jorge Gaitan",
+  role: "Ingeniero de Sistemas y Computación",
+  bio: "Full-Stack y Power Platform Developer enfocado en crear aplicaciones, automatizaciones y soluciones empresariales modernas centradas en el usuario.",
+  avatarUrl: "/avatar.png",
+  email: "jorgedgaitanr2003@gmail.com",
+  location: "Bogotá, Colombia",
   socials: [
     {
-      platform: "github",
-      url: "https://github.com/johndoe",
-      icon: "github-icon"
+      platform: "GitHub",
+      url: "https://github.com/jorge26556",
     },
     {
-      platform: "linkedin",
-      url: "https://linkedin.com/in/johndoe",
-      icon: "linkedin-icon"
-    }
+      platform: "LinkedIn",
+      url: "https://linkedin.com/in/jorge-david-gaitan-realpe-422835289",
+    },
   ],
-  resumeUrl: "/files/resume.pdf"
+  resumeUrl: "/Jorge-Gaitan-CV.pdf",
 };
