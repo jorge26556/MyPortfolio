@@ -127,10 +127,13 @@ function MediaSlideshow({
 }
 
 function MediaShowcase({ project, lang, eager = false, className, variant = "card" }: MediaShowcaseProps) {
+  const isProd = process.env.NODE_ENV === 'production';
+  const prefix = isProd ? "/MyPortfolio" : "";
+
   if (project.mediaType === "slideshow" && project.slideshowUrls) {
     return (
       <MediaSlideshow
-        urls={project.slideshowUrls}
+        urls={project.slideshowUrls.map(url => url.startsWith('/') ? `${prefix}${url}` : url)}
         caption={project.mediaCaption?.[lang]}
         eager={eager}
         variant={variant}
@@ -139,16 +142,19 @@ function MediaShowcase({ project, lang, eager = false, className, variant = "car
   }
 
   if (project.mediaType === "video" && project.videoUrl) {
+    const videoUrl = project.videoUrl.startsWith('/') ? `${prefix}${project.videoUrl}` : project.videoUrl;
+    const placeholderUrl = project.imageUrl?.startsWith('/') ? `${prefix}${project.imageUrl}` : project.imageUrl;
+
     return (
       <div className="relative h-full w-full bg-black/20">
-        {project.imageUrl && (
+        {placeholderUrl && (
           <div 
             className="absolute inset-0 bg-cover bg-center blur-2xl opacity-35 scale-110"
-            style={{ backgroundImage: `url(${project.imageUrl})` }}
+            style={{ backgroundImage: `url(${placeholderUrl})` }}
           />
         )}
         <video
-          src={project.videoUrl}
+          src={videoUrl}
           autoPlay
           loop
           muted
@@ -159,21 +165,22 @@ function MediaShowcase({ project, lang, eager = false, className, variant = "car
             "object-contain",
             className
           )}
-          poster={project.imageUrl}
+          poster={placeholderUrl}
         />
       </div>
     );
   }
 
   if (project.imageUrl) {
+    const imageUrl = project.imageUrl.startsWith('/') ? `${prefix}${project.imageUrl}` : project.imageUrl;
     return (
       <div className="relative h-full w-full bg-black/5">
         <div 
           className="absolute inset-0 bg-cover bg-center blur-3xl opacity-45 scale-110"
-          style={{ backgroundImage: `url(${project.imageUrl})` }}
+          style={{ backgroundImage: `url(${imageUrl})` }}
         />
         <Image
-          src={project.imageUrl}
+          src={imageUrl}
           alt={project.title[lang]}
           fill
           loading={eager ? "eager" : "lazy"}
