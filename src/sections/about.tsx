@@ -19,35 +19,20 @@ export const AboutSection = () => {
               <div className="h-1 w-20 rounded-full bg-primary/30" />
             </div>
 
-            <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-              <div className="glass group relative rounded-3xl p-8 transition-all duration-500 hover:-translate-y-2 hover:shadow-primary/5">
-                <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-primary/10 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
-                <h3 className="mb-4 text-xl font-bold tracking-tight text-primary">
-                  {lang === "en" ? "Professional Summary" : "Resumen profesional"}
+            <div className="glass group relative overflow-hidden rounded-[2rem] p-8 transition-all duration-500 hover:shadow-primary/5 md:p-12">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+              
+              <div className="relative z-10 flex flex-col gap-6">
+                <h3 className="text-2xl font-bold tracking-tight text-foreground md:text-3xl">
+                  {lang === "en" ? "Professional & Tech Focus" : "Profesional & Enfoque Tecnológico"}
                 </h3>
-                <p className="text-sm leading-relaxed text-muted-foreground lg:text-base">
-                  {t.about.professionalSummary}
-                </p>
-              </div>
-
-              <div className="glass group relative rounded-3xl p-8 transition-all duration-500 hover:-translate-y-2 hover:shadow-blue-500/5">
-                <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-blue-500/10 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
-                <h3 className="mb-4 text-xl font-bold tracking-tight text-blue-400 dark:text-blue-300">
-                  {lang === "en" ? "Current Focus" : "Enfoque actual"}
-                </h3>
-                <p className="text-sm leading-relaxed text-muted-foreground lg:text-base">
-                  {t.about.currentFocus}
-                </p>
-              </div>
-
-              <div className="glass group relative rounded-3xl p-8 transition-all duration-500 hover:-translate-y-2 hover:shadow-violet-500/5">
-                <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-violet-500/10 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
-                <h3 className="mb-4 text-xl font-bold tracking-tight text-violet-400 dark:text-violet-300">
-                  {lang === "en" ? "My Story" : "Mi historia"}
-                </h3>
-                <p className="text-sm leading-relaxed text-muted-foreground lg:text-base">
-                  {t.about.shortStory}
-                </p>
+                <div className="flex flex-col gap-4">
+                  {t.about.content.map((paragraph, i) => (
+                    <p key={i} className="text-base leading-relaxed text-muted-foreground md:text-lg md:leading-loose">
+                      {paragraph}
+                    </p>
+                  ))}
+                </div>
               </div>
             </div>
           </div>

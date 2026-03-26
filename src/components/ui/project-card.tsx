@@ -185,7 +185,7 @@ function MediaShowcase({ project, lang, eager = false, className, variant = "car
           fill
           loading={eager ? "eager" : "lazy"}
           sizes={variant === "card" ? "(max-width: 768px) 100vw, (max-width: 1400px) 50vw, 33vw" : "100vw"}
-          quality={94}
+          quality={90}
           className={cn(
             "relative z-10",
             "object-contain",
@@ -397,17 +397,17 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
             setOpen(true);
           }
         }}
-        className="group relative flex w-full flex-col overflow-hidden rounded-3xl glass text-left transition-all duration-500 hover:-translate-y-2 hover:border-primary/30 hover:shadow-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
+        className="group relative flex w-full flex-col overflow-hidden rounded-3xl glass text-left transition-all duration-500 md:hover:-translate-y-2 md:hover:border-primary/30 md:hover:shadow-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
       >
         <div className="relative aspect-[16/10] overflow-hidden bg-black/10">
           <motion.div
             style={{ y: translateY }}
-            className="relative -top-[6%] h-[112%] w-full transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+            className="relative -top-[6%] h-[112%] w-full transition-transform duration-700 ease-out md:group-hover:scale-[1.03]"
           >
             <MediaShowcase project={project} lang={lang} eager={eagerMedia} />
           </motion.div>
 
-          <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-black/32 via-transparent to-transparent opacity-70 transition-opacity duration-300 group-hover:opacity-85" />
+          <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-black/32 via-transparent to-transparent opacity-70 transition-opacity duration-300 md:group-hover:opacity-85" />
 
           <div className="absolute inset-x-4 bottom-4 z-10 flex items-end justify-between gap-3">
             <div className="rounded-full border border-white/14 bg-black/28 px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.24em] text-white/92 backdrop-blur-sm">
@@ -418,7 +418,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
             </div>
           </div>
 
-          <div className="absolute inset-0 z-10 flex items-center justify-center gap-3 bg-background/22 opacity-0 backdrop-blur-[2px] transition-opacity duration-300 group-hover:opacity-100">
+          <div className="absolute inset-0 z-10 flex items-center justify-center gap-3 bg-background/22 opacity-0 backdrop-blur-[2px] transition-opacity duration-300 lg:group-hover:opacity-100">
             {project.githubUrl && (
               <span className="inline-flex items-center gap-2 rounded-full bg-primary px-4 py-2 font-medium text-primary-foreground shadow-lg">
                 <GithubIcon size={16} />
@@ -449,7 +449,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
             )}
           </div>
 
-          <h3 className="mb-2 text-xl font-bold tracking-tight text-foreground transition-colors group-hover:text-primary">
+          <h3 className="mb-2 text-xl font-bold tracking-tight text-foreground transition-colors md:group-hover:text-primary">
             {project.title[lang]}
           </h3>
 

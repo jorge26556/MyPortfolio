@@ -21,10 +21,10 @@ export default function Home() {
       {/* Content Sections (Dynamic Imports) */}
       <ProjectsSection />
       <AboutSection />
+      <AchievementsSection />
       <SkillsSection />
       <ExperienceSection />
       <ServicesSection />
-      <AchievementsSection />
       
       <ContactSection />
       <Footer />

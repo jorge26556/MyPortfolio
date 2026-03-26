@@ -48,10 +48,7 @@ export const Footer = () => {
 
           <div className="flex flex-col items-center justify-between gap-8 border-t border-border/10 pt-8 md:flex-row">
             <p className="order-2 text-sm font-medium tracking-tight text-muted-foreground md:order-1">
-              &copy; {currentYear} —{" "}
-              {lang === "en"
-                ? `Crafted by ${profileData.name}.`
-                : `Creado por ${profileData.name}.`}
+              &copy; {currentYear} {profileData.name}. All rights reserved. Ingeniero de Sistemas | Power Platform & AI
             </p>
 
             <div className="order-1 flex items-center gap-6 md:order-2">

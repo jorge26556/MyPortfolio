@@ -49,8 +49,8 @@ export const experienceData: Experience[] = [
       es: "Prácticas en Banco de la República",
       en: "Internship at Banco de la República",
     },
-    startDate: "Semestre 2024-II",
-    endDate: "Semestre 2024-II",
+    startDate: "Julio 2024",
+    endDate: "Diciembre 2024",
     location: {
       es: "Bogotá, Colombia",
       en: "Bogota, Colombia",
@@ -69,44 +69,23 @@ export const experienceData: Experience[] = [
   },
   {
     id: "exp-3",
-    company: "Work and Travel 2023",
+    company: "Work and Travel",
     role: {
-      es: "Lifeguard",
-      en: "Lifeguard",
-    },
-    startDate: "2023",
-    endDate: "2023",
-    location: {
-      es: "Ohio, Estados Unidos",
-      en: "Ohio, United States",
-    },
-    description: [
-      {
-        es: "Experiencia internacional enfocada en seguridad, atención al cliente y respuesta ante emergencias en entornos acuáticos.",
-        en: "International experience focused on safety, customer service, and emergency response in aquatic environments.",
-      },
-    ],
-    technologies: ["Safety", "Customer Service", "Emergency Response"],
-  },
-  {
-    id: "exp-4",
-    company: "Work and Travel 2022",
-    role: {
-      es: "Boat Instructor",
-      en: "Boat Instructor",
+      es: "Lifeguard & Boat Instructor",
+      en: "Lifeguard & Boat Instructor",
     },
     startDate: "2022",
-    endDate: "2022",
+    endDate: "2023",
     location: {
-      es: "Arizona, Estados Unidos",
-      en: "Arizona, United States",
+      es: "Ohio & Arizona, Estados Unidos",
+      en: "Ohio & Arizona, United States",
     },
     description: [
       {
-        es: "Experiencia internacional orientada a la guía de usuarios, explicación de protocolos de seguridad y acompañamiento en actividades acuáticas.",
-        en: "International experience focused on user guidance, safety protocol explanation, and support in aquatic activities.",
+        es: "Experiencias internacionales que fortalecieron mi nivel de inglés, atención al cliente, capacidad de reacción y desenvolvimiento en entornos multiculturales.",
+        en: "International experiences that strengthened my English proficiency, customer service skills, reaction capacity, and performance in multicultural environments.",
       },
     ],
-    technologies: ["Instruction", "Safety Protocols", "Customer Guidance"],
-  },
+    technologies: ["Customer Service", "Emergency Response", "Multicultural Environment"],
+  }
 ];

@@ -72,7 +72,7 @@ export const servicesData: Service[] = [
       es: "Automatizaciones que reducen tareas repetitivas y mejoran la productividad.",
       en: "Automations that reduce repetitive tasks and improve productivity.",
     },
-    icon: "server-icon",
+    icon: "sparkles-icon",
     features: [
       {
         es: "Flujos en Power Automate",
@@ -98,7 +98,7 @@ export const servicesData: Service[] = [
       es: "Aplicaciones y soluciones empresariales dentro del ecosistema Microsoft.",
       en: "Applications and enterprise solutions inside the Microsoft ecosystem.",
     },
-    icon: "server-icon",
+    icon: "database-icon",
     features: [
       {
         es: "Power Apps",
@@ -150,7 +150,7 @@ export const servicesData: Service[] = [
       es: "Capacidades de IA generativa integradas con contexto, automatización y valor real.",
       en: "Generative AI capabilities integrated with context, automation, and real value.",
     },
-    icon: "design-pencil-icon",
+    icon: "ai-icon",
     features: [
       {
         es: "OpenAI API y asistentes",

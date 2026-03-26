@@ -43,7 +43,7 @@ export const projectsData: Project[] = [
       en: "Mobile health-focused project designed to provide an accessible experience for consultation, education, and user guidance around dyslipidemia.",
     },
     mediaType: "image",
-    imageUrl: "/projects/images/dislipidemiasapp.jpg",
+    imageUrl: "/projects/images/dislipidemiasapp-mockup3.png",
     tags: ["Kotlin", "Android"],
     category: "Mobile",
     featured: true,

@@ -5,13 +5,16 @@ import { Container } from "@/components/ui/container";
 import { useLanguage } from "@/components/providers/language-provider";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
 import { servicesData } from "@/data/services";
-import { Code, Layout, Server, Sparkles } from "lucide-react";
+import { Code, Layout, Server, Sparkles, Database, Bot, Zap } from "lucide-react";
 
 const getIcon = (iconName: string) => {
   switch (iconName) {
-    case "code-icon": return <Code className="size-6 text-primary" />;
-    case "design-pencil-icon": return <Layout className="size-6 text-blue-400" />;
+    case "code-icon": return <Code className="size-6 text-blue-400" />;
     case "server-icon": return <Server className="size-6 text-purple-400" />;
+    case "sparkles-icon": return <Zap className="size-6 text-yellow-400" />;
+    case "database-icon": return <Database className="size-6 text-orange-400" />;
+    case "design-pencil-icon": return <Layout className="size-6 text-pink-400" />;
+    case "ai-icon": return <Bot className="size-6 text-indigo-400" />;
     default: return <Sparkles className="size-6 text-primary" />;
   }
 };
