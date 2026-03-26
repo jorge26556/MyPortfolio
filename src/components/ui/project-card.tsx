@@ -85,7 +85,7 @@ function MediaSlideshow({
             fill
             loading={eager && i === 0 ? "eager" : "lazy"}
             sizes={variant === "card" ? "(max-width: 768px) 100vw, (max-width: 1400px) 50vw, 33vw" : "100vw"}
-            quality={92}
+            quality={90}
             className={cn(
               "transition-transform duration-700 relative z-10",
               "object-contain"
