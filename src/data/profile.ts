@@ -15,7 +15,7 @@ export interface Profile {
 }
 
 export const profileData: Profile = {
-  name: "Jorge Gaitan",
+  name: "Jorge Gaitán",
   role: "Ingeniero de Sistemas y Computación",
   bio: "Full-Stack y Power Platform Developer enfocado en crear aplicaciones, automatizaciones y soluciones empresariales modernas centradas en el usuario.",
   avatarUrl: "/avatar.png",

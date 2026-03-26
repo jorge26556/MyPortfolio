@@ -41,11 +41,11 @@ export const ContactSection = () => {
               </div>
 
               <h2 className="mb-8 text-4xl font-bold tracking-tight text-balance sm:text-6xl">
-                {t.sectionTitles.contact}
+                {t.contact.title}
               </h2>
 
               <p className="mb-10 max-w-2xl text-xl leading-relaxed text-muted-foreground">
-                {contactSummary}
+                {t.contact.description}
               </p>
 
               <div className="flex flex-col gap-6">

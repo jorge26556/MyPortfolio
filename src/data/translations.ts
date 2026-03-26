@@ -29,13 +29,13 @@ export interface Translations {
     contact: string;
   };
   about: {
-    professionalSummary: string;
-    currentFocus: string;
-    shortStory: string;
+    content: string[];
   };
   contact: {
     sendButton: string;
     successMessage: string;
+    title: string;
+    description: string;
   };
   projects: {
     featured: string;
@@ -60,14 +60,14 @@ export const translationsData: Record<Language, Translations> = {
     },
     hero: {
       greeting: "Hola, soy",
-      role: "Ingeniero de Sistemas y Computación | Full-Stack Developer | Power Platform Developer | Generative AI Builder | Agentic Software Engineer",
+      role: "Ingeniero de Sistemas y Computación | Full-Stack Developer | Generative AI Builder | Power Platform Developer | Agentic Software Engineer",
       description:
-        "Diseño y desarrollo soluciones digitales modernas, desde aplicaciones web y móviles hasta automatizaciones empresariales y software potenciado por IA. Me enfoco en crear productos funcionales, escalables y centrados en el usuario.",
+        "Construyo soluciones digitales que combinan desarrollo, automatización e inteligencia artificial para resolver problemas reales de negocio. Desde aplicaciones web hasta procesos automatizados, mi enfoque es crear productos eficientes, escalables y centrados en el usuario.",
       ctaPrimary: "Ver proyectos",
       ctaSecondary: "Descargar CV",
     },
     sectionTitles: {
-      about: "Sobre Mí",
+      about: "Perfil",
       projects: "Proyectos Destacados",
       experience: "Experiencia",
       skills: "Habilidades",
@@ -76,21 +76,22 @@ export const translationsData: Record<Language, Translations> = {
       contact: "Contacto",
     },
     about: {
-      professionalSummary:
-        "Soy ingeniero de sistemas y computación con más de 4 años de experiencia construyendo aplicaciones, automatizaciones y soluciones tecnológicas orientadas a resolver necesidades reales de negocio y de usuario. Me caracterizo por mi proactividad, dedicación, orientación al detalle y capacidad para trabajar de forma efectiva en equipos multidisciplinarios.",
-      currentFocus:
-        "A lo largo de mi trayectoria he trabajado en desarrollo de aplicaciones Android, aplicaciones web, bases de datos, automatización de procesos y soluciones empresariales con Microsoft Power Platform. También he fortalecido mi perfil en desarrollo full-stack moderno, integración de inteligencia artificial generativa y exploración de arquitecturas basadas en agentes.",
-      shortStory:
-        "Actualmente, mi enfoque principal está en el desarrollo de soluciones empresariales con Power Apps, Power Automate, Dataverse, SQL y herramientas Microsoft, mientras continúo profundizando en tecnologías como React, Django, Supabase, automatización inteligente y orquestación de agentes de IA.",
+      content: [
+        "Ingeniero de Sistemas y Computación enfocado en desarrollo de aplicaciones, automatización de procesos y soluciones tecnológicas orientadas al negocio, con especial énfasis en Power Platform e inteligencia artificial.",
+        "Experiencia en el diseño e implementación de soluciones con Power Apps, Power Automate, Dataverse, SQL y Python dentro del ecosistema Microsoft, impulsando la optimización y eficiencia operativa.",
+        "Con formación en desarrollo full-stack (React, Node.js, Django), construyo soluciones end-to-end, escalables y centradas en el usuario, integrando IA generativa y automatización (RPA)."
+      ],
     },
     contact: {
       sendButton: "Enviar mensaje",
       successMessage: "Email copiado con éxito",
+      title: "Construyamos soluciones con impacto real",
+      description: "Automatización, desarrollo e inteligencia artificial para llevar tu proyecto al siguiente nivel."
     },
     projects: {
       featured: "Destacado",
       featuredIntro:
-        "Una selección curada de mis proyectos más relevantes, con tarjetas premium, contenido bilingüe, media destacada y una presentación limpia y profesional.",
+        "Una selección de proyectos desarrollados con Power Platform, desarrollo full-stack e inteligencia artificial, enfocados en la automatización de procesos y la creación de soluciones escalables.",
       all: "Todos",
       allProjects: "Todos los proyectos",
       viewCode: "Ver código",
@@ -109,14 +110,14 @@ export const translationsData: Record<Language, Translations> = {
     },
     hero: {
       greeting: "Hi, I'm",
-      role: "Systems and Computer Engineer | Full-Stack Developer | Power Platform Developer | Generative AI Builder | Agentic Software Engineer",
+      role: "Systems and Computer Engineer | Full-Stack Developer | Generative AI Builder | Power Platform Developer | Agentic Software Engineer",
       description:
-        "I design and build modern digital solutions, from web and mobile applications to business automation and AI-powered software. I focus on creating functional, scalable, and user-centered products.",
+        "I build digital solutions that combine development, automation, and artificial intelligence to solve real business problems. From web applications to automated processes, my focus is on creating efficient, scalable, and user-centered products.",
       ctaPrimary: "View projects",
       ctaSecondary: "Download resume",
     },
     sectionTitles: {
-      about: "About Me",
+      about: "Profile",
       projects: "Featured Projects",
       experience: "Experience",
       skills: "Skills",
@@ -125,21 +126,22 @@ export const translationsData: Record<Language, Translations> = {
       contact: "Contact",
     },
     about: {
-      professionalSummary:
-        "I am a Systems and Computer Engineer with more than 4 years of experience building applications, automations, and technology solutions focused on solving real business and user needs. I stand out for my proactivity, dedication, attention to detail, and ability to work effectively in multidisciplinary teams.",
-      currentFocus:
-        "Throughout my career, I have worked on Android applications, web applications, databases, process automation, and enterprise solutions with Microsoft Power Platform. I have also strengthened my profile in modern full-stack development, generative AI integration, and agent-based software architectures.",
-      shortStory:
-        "Currently, my main focus is on building enterprise solutions with Power Apps, Power Automate, Dataverse, SQL, and Microsoft tools, while continuing to deepen my expertise in technologies such as React, Django, Supabase, intelligent automation, and AI agent orchestration.",
+      content: [
+        "Systems and Computer Engineer focused on application development, process automation, and business-oriented technology solutions, with special emphasis on Power Platform and artificial intelligence.",
+        "Experienced in designing and implementing solutions with Power Apps, Power Automate, Dataverse, SQL, and Python within the Microsoft ecosystem, driving operational optimization and efficiency.",
+        "With training in full-stack development (React, Node.js, Django), I build end-to-end, scalable, and user-centered solutions, integrating generative AI and automation (RPA)."
+      ],
     },
     contact: {
       sendButton: "Send message",
       successMessage: "Email copied successfully",
+      title: "Let's build solutions with real impact",
+      description: "Automation, development, and AI to take your project to the next level."
     },
     projects: {
       featured: "Featured",
       featuredIntro:
-        "A curated selection of my most impactful work, presented with premium cards, bilingual content, elegant motion, and clean professional layouts.",
+        "A selection of projects developed with Power Platform, full-stack development, and artificial intelligence, focused on process automation and creating scalable solutions.",
       all: "All",
       allProjects: "All Projects",
       viewCode: "View Code",
