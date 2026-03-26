@@ -155,9 +155,8 @@ export function HeroSection() {
                   size="lg"
                   className="group h-14 w-full rounded-2xl border border-slate-200/80 bg-white/78 px-8 text-base text-slate-800 shadow-lg shadow-slate-200/35 backdrop-blur-md transition-all hover:bg-white active:scale-95 dark:border-white/10 dark:bg-white/[0.06] dark:text-slate-100 dark:shadow-transparent dark:hover:bg-white/[0.10] sm:w-auto"
                   onClick={() => {
-                    const isProd = process.env.NODE_ENV === "production";
-                    const basePath = isProd ? "/MyPortfolio" : "";
-                    window.open(`${basePath}${lang === "es" ? "/cv_es.pdf" : "/cv_en.pdf"}`, "_blank");
+                    const cvFile = lang === "es" ? "cv_es.pdf" : "cv_en.pdf";
+                    window.open(cvFile, "_blank");
                   }}
                 >
                   <Download className="mr-2 h-5 w-5 transition-transform group-hover:-translate-y-1" />
