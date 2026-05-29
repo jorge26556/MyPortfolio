@@ -127,13 +127,10 @@ function MediaSlideshow({
 }
 
 function MediaShowcase({ project, lang, eager = false, className, variant = "card" }: MediaShowcaseProps) {
-  const isProd = process.env.NODE_ENV === 'production';
-  const prefix = isProd ? "/MyPortfolio" : "";
-
   if (project.mediaType === "slideshow" && project.slideshowUrls) {
     return (
       <MediaSlideshow
-        urls={project.slideshowUrls.map(url => url.startsWith('/') ? `${prefix}${url}` : url)}
+        urls={project.slideshowUrls}
         caption={project.mediaCaption?.[lang]}
         eager={eager}
         variant={variant}
@@ -142,8 +139,8 @@ function MediaShowcase({ project, lang, eager = false, className, variant = "car
   }
 
   if (project.mediaType === "video" && project.videoUrl) {
-    const videoUrl = project.videoUrl.startsWith('/') ? `${prefix}${project.videoUrl}` : project.videoUrl;
-    const placeholderUrl = project.imageUrl?.startsWith('/') ? `${prefix}${project.imageUrl}` : project.imageUrl;
+    const videoUrl = project.videoUrl;
+    const placeholderUrl = project.imageUrl;
 
     return (
       <div className="relative h-full w-full bg-black/20">
@@ -172,7 +169,7 @@ function MediaShowcase({ project, lang, eager = false, className, variant = "car
   }
 
   if (project.imageUrl) {
-    const imageUrl = project.imageUrl.startsWith('/') ? `${prefix}${project.imageUrl}` : project.imageUrl;
+    const imageUrl = project.imageUrl;
     return (
       <div className="relative h-full w-full bg-black/5">
         <div 
