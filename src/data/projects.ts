@@ -27,6 +27,11 @@ const sprintAppSlides = createSlideUrls(
   Array.from({ length: 18 }, (_, i) => i + 1)
 );
 
+const barberiAppSlides = createSlideUrls(
+  "barberiapp",
+  Array.from({ length: 3 }, (_, i) => i + 1)
+);
+
 export const projectsData: Project[] = [
   {
     id: "proj-1",
@@ -248,5 +253,26 @@ export const projectsData: Project[] = [
     tags: ["Power Apps", "Power Automate", "SQL", "Dataverse"],
     category: "Power Platform",
     featured: false,
+  },
+  {
+    id: "proj-12",
+    title: {
+      es: "BarberiAPP Landing Page",
+      en: "BarberiAPP Landing Page",
+    },
+    shortDescription: {
+      es: "Landing page moderna para una barberia, enfocada en presentar servicios, estilo visual de marca y una experiencia clara para atraer clientes desde el primer vistazo.",
+      en: "Modern landing page for a barbershop, focused on presenting services, brand visual style, and a clear experience to attract clients from the first glance.",
+    },
+    longDescription: {
+      es: "Proyecto web orientado a presencia digital comercial, con una interfaz visual cuidada, secciones pensadas para conversion y capturas del resultado final en formato slideshow.",
+      en: "Commercial web presence project with a polished visual interface, conversion-focused sections, and final-result screenshots presented as a slideshow.",
+    },
+    mediaType: "slideshow",
+    imageUrl: barberiAppSlides[0],
+    slideshowUrls: barberiAppSlides,
+    tags: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+    category: "Web",
+    featured: true,
   },
 ];
