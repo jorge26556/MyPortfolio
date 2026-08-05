@@ -3,7 +3,8 @@ import { type BilingualText } from "@/data/translations";
 export interface Achievement {
   id: string;
   title: BilingualText;
-  date?: string;
+  /** Bilingual so in-progress states ("Cursando" / "In progress") localise too. */
+  date?: BilingualText;
   description?: BilingualText;
   category: string;
   issuer?: BilingualText;
@@ -11,7 +12,27 @@ export interface Achievement {
   icon?: string;
 }
 
+const inProgress: BilingualText = { es: "Cursando", en: "In progress" };
+const year = (value: string): BilingualText => ({ es: value, en: value });
+
 export const achievementsData: Achievement[] = [
+  {
+    id: "ach-yellow-belt",
+    title: {
+      es: "Six Sigma Yellow Belt",
+      en: "Six Sigma Yellow Belt",
+    },
+    description: {
+      es: "Fundamentos de Six Sigma aplicados a mejora de procesos, recolección y análisis de datos en equipo.",
+      en: "Six Sigma fundamentals applied to process improvement, data gathering, and team analysis.",
+    },
+    category: "Certification",
+    issuer: {
+      es: "TP",
+      en: "TP",
+    },
+    date: { es: "Mar–Abr 2026", en: "Mar–Apr 2026" },
+  },
   {
     id: "ach-1",
     title: {
@@ -27,7 +48,7 @@ export const achievementsData: Achievement[] = [
       es: "Platzi",
       en: "Platzi",
     },
-    date: "2025"
+    date: year("2025"),
   },
   {
     id: "ach-2",
@@ -44,7 +65,7 @@ export const achievementsData: Achievement[] = [
       es: "Platzi",
       en: "Platzi",
     },
-    date: "2025"
+    date: year("2025"),
   },
   {
     id: "ach-3",
@@ -61,7 +82,7 @@ export const achievementsData: Achievement[] = [
       es: "Udemy",
       en: "Udemy",
     },
-    date: "2024"
+    date: year("2024"),
   },
   {
     id: "ach-4",
@@ -78,7 +99,7 @@ export const achievementsData: Achievement[] = [
       es: "Udemy",
       en: "Udemy",
     },
-    date: "2024"
+    date: year("2024"),
   },
   {
     id: "ach-5",
@@ -95,7 +116,7 @@ export const achievementsData: Achievement[] = [
       es: "Cisco Networking Academy",
       en: "Cisco Networking Academy",
     },
-    date: "2022"
+    date: year("2022"),
   },
   {
     id: "ach-6",
@@ -112,7 +133,7 @@ export const achievementsData: Achievement[] = [
       es: "Open English",
       en: "Open English",
     },
-    date: "2020"
+    date: year("2020"),
   },
   {
     id: "ach-7",
@@ -129,7 +150,7 @@ export const achievementsData: Achievement[] = [
       es: "Udemy",
       en: "Udemy",
     },
-    date: "Cursando"
+    date: inProgress,
   },
   {
     id: "ach-8",
@@ -146,7 +167,7 @@ export const achievementsData: Achievement[] = [
       es: "Udemy",
       en: "Udemy",
     },
-    date: "Cursando"
+    date: inProgress,
   },
   {
     id: "ach-9",
@@ -163,6 +184,6 @@ export const achievementsData: Achievement[] = [
       es: "Udemy",
       en: "Udemy",
     },
-    date: "Cursando"
-  }
+    date: inProgress,
+  },
 ];
