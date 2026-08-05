@@ -1,27 +1,36 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { projectsData } from "@/data/projects";
 import { useLanguage } from "@/components/providers/language-provider";
 import { ProjectCard } from "@/components/ui/project-card";
 import { ProjectFilters, ProjectCategory } from "@/components/ui/project-filters";
 import { Container } from "@/components/ui/container";
+import { SectionHeading } from "@/components/ui/section-heading";
 
 export function ProjectsSection() {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
   const [activeCategory, setActiveCategory] = useState<ProjectCategory>("All");
 
   const categories: ProjectCategory[] = ["All", "Web", "Mobile", "AI", "Power Platform", "Other"];
 
-  const featuredProjects = useMemo(() => 
-    projectsData.filter(p => p.featured), 
-  []);
+  const featuredProjects = useMemo(() => projectsData.filter((p) => p.featured), []);
 
+  // With "All" selected the featured projects are already shown in the grid
+  // above, so this list holds the rest. Every card below used to be a second
+  // copy of a featured card — including a second copy of its media.
   const filteredProjects = useMemo(() => {
-    if (activeCategory === "All") return projectsData;
-    return projectsData.filter(p => p.category === activeCategory);
+    if (activeCategory === "All") return projectsData.filter((p) => !p.featured);
+    return projectsData.filter((p) => p.category === activeCategory);
   }, [activeCategory]);
+
+  const listHeading =
+    activeCategory === "All"
+      ? lang === "en"
+        ? "More projects"
+        : "Más proyectos"
+      : t.projects.allProjects;
 
   return (
     <section id="projects" className="relative py-24 sm:py-32 overflow-hidden bg-background">
@@ -39,13 +48,11 @@ export function ProjectsSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="mb-4 text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
-              {t.sectionTitles.projects}
-            </h2>
-            <div className="mx-auto h-1.5 w-24 rounded-full bg-gradient-to-r from-primary to-secondary" />
-            <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
-              {t.projects.featuredIntro}
-            </p>
+            <SectionHeading
+              align="center"
+              title={t.sectionTitles.projects}
+              description={t.projects.featuredIntro}
+            />
           </motion.div>
         </div>
 
@@ -60,7 +67,7 @@ export function ProjectsSection() {
         <div className="relative pt-16 border-t border-border/50">
           <div className="mb-12 text-center">
             <h3 className="mb-8 text-2xl font-bold text-foreground">
-              {t.projects.allProjects}
+              {listHeading}
             </h3>
             
             <ProjectFilters 
@@ -71,24 +78,32 @@ export function ProjectsSection() {
             />
           </div>
 
-          <motion.div 
-            layout
+          {/*
+            Keying on the category remounts the cards so their entrance
+            animation replays. That replaces the previous `layout` +
+            `AnimatePresence popLayout` combination, which measured every card
+            in the grid on each render.
+          */}
+          <div
+            key={activeCategory}
             className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
           >
-            <AnimatePresence mode="popLayout" initial={false}>
-              {filteredProjects.map((project, index) => (
-                <ProjectCard 
-                  key={project.id} 
-                  project={project} 
-                  index={index % 4} // Reset animation delay based on grid row
-                />
-              ))}
-            </AnimatePresence>
-          </motion.div>
+            {filteredProjects.map((project, index) => (
+              <ProjectCard
+                key={project.id}
+                project={project}
+                index={index % 4} // Reset animation delay based on grid row
+              />
+            ))}
+          </div>
           
           {filteredProjects.length === 0 && (
             <div className="flex flex-col items-center justify-center py-24 text-muted-foreground">
-              <p className="text-xl">No projects found in this category.</p>
+              <p className="text-xl">
+                {lang === "en"
+                  ? "No projects found in this category."
+                  : "No hay proyectos en esta categoría."}
+              </p>
             </div>
           )}
         </div>

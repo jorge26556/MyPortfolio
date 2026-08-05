@@ -1,95 +1,99 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 
 export function CustomCursor() {
   const [isHovered, setIsHovered] = useState(false);
-  const [isVisible, setIsVisible] = useState(false);
-  const [isDesktop, setIsDesktop] = useState(false);
+  const [isEnabled, setIsEnabled] = useState(false);
 
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
+  const opacity = useMotionValue(0);
 
-  // Smooth tracking config
   const springConfig = { damping: 20, stiffness: 250, mass: 0.5 };
   const smoothX = useSpring(mouseX, springConfig);
   const smoothY = useSpring(mouseY, springConfig);
 
   useEffect(() => {
-    const checkDesktop = () => {
-      // Hide on touch devices or small screens
-      setIsDesktop(window.matchMedia("(pointer: fine)").matches);
-    };
+    // A fine pointer is necessary but not sufficient — respect reduced motion too.
+    const finePointer = window.matchMedia("(pointer: fine)");
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
-    checkDesktop();
-    window.addEventListener("resize", checkDesktop);
+    const sync = () => setIsEnabled(finePointer.matches && !reducedMotion.matches);
+    sync();
+
+    finePointer.addEventListener("change", sync);
+    reducedMotion.addEventListener("change", sync);
+    return () => {
+      finePointer.removeEventListener("change", sync);
+      reducedMotion.removeEventListener("change", sync);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!isEnabled) return;
 
     const moveMouse = (e: MouseEvent) => {
       mouseX.set(e.clientX);
       mouseY.set(e.clientY);
-      if (!isVisible) setIsVisible(true);
+      // Driving opacity through a motion value keeps pointer movement off
+      // React's render path entirely.
+      opacity.set(1);
     };
 
-    const handleHoverStart = (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
-      if (
-        target.closest("button") || 
-        target.closest("a") || 
-        target.dataset.hover === "true" ||
-        window.getComputedStyle(target).cursor === "pointer"
-      ) {
-        setIsHovered(true);
-      } else {
-        setIsHovered(false);
-      }
+    // `closest` walks a handful of ancestors. The previous version also called
+    // getComputedStyle on every mouseover, forcing a synchronous style recalc
+    // on each one.
+    const handleHover = (e: MouseEvent) => {
+      const target = e.target as HTMLElement | null;
+      setIsHovered(Boolean(target?.closest('button, a, [role="button"], [data-hover="true"]')));
     };
 
-    const handleMouseLeave = () => setIsVisible(false);
-    const handleMouseEnter = () => setIsVisible(true);
+    const hide = () => opacity.set(0);
+    const show = () => opacity.set(1);
 
-    window.addEventListener("mousemove", moveMouse);
-    window.addEventListener("mouseover", handleHoverStart);
-    document.addEventListener("mouseleave", handleMouseLeave);
-    document.addEventListener("mouseenter", handleMouseEnter);
+    window.addEventListener("mousemove", moveMouse, { passive: true });
+    window.addEventListener("mouseover", handleHover, { passive: true });
+    document.addEventListener("mouseleave", hide);
+    document.addEventListener("mouseenter", show);
 
     return () => {
-      window.removeEventListener("resize", checkDesktop);
       window.removeEventListener("mousemove", moveMouse);
-      window.removeEventListener("mouseover", handleHoverStart);
-      document.removeEventListener("mouseleave", handleMouseLeave);
-      document.removeEventListener("mouseenter", handleMouseEnter);
+      window.removeEventListener("mouseover", handleHover);
+      document.removeEventListener("mouseleave", hide);
+      document.removeEventListener("mouseenter", show);
     };
-  }, [mouseX, mouseY, isVisible]);
+  }, [isEnabled, mouseX, mouseY, opacity]);
 
-  if (!isDesktop) return null;
+  if (!isEnabled) return null;
 
   return (
     <>
       {/* Outer Ring */}
       <motion.div
-        className="pointer-events-none fixed top-0 left-0 z-[9999] size-10 rounded-full border border-primary/30 mix-blend-difference hidden md:block"
+        className="pointer-events-none fixed top-0 left-0 z-[9999] hidden size-10 rounded-full border border-primary/30 mix-blend-difference md:block"
         style={{
           x: smoothX,
           y: smoothY,
+          opacity,
           translateX: "-50%",
           translateY: "-50%",
           scale: isHovered ? 1.5 : 1,
-          opacity: isVisible ? 1 : 0,
         }}
         transition={{ type: "spring", damping: 30, stiffness: 200 }}
       />
-      
+
       {/* Target Dot */}
       <motion.div
-        className="pointer-events-none fixed top-0 left-0 z-[9999] size-1.5 rounded-full bg-primary mix-blend-difference hidden md:block"
+        className="pointer-events-none fixed top-0 left-0 z-[9999] hidden size-1.5 rounded-full bg-primary mix-blend-difference md:block"
         style={{
           x: mouseX,
           y: mouseY,
+          opacity,
           translateX: "-50%",
           translateY: "-50%",
           scale: isHovered ? 4 : 1,
-          opacity: isVisible ? 1 : 0,
         }}
         transition={{ type: "spring", damping: 20, stiffness: 300 }}
       />

@@ -1,10 +1,10 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { Dialog } from "@base-ui/react/dialog";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { ExternalLink, X } from "lucide-react";
+import { motion } from "framer-motion";
+import { ExternalLink, Play, X } from "lucide-react";
 import { Project } from "@/data/projects";
 import { useLanguage } from "@/components/providers/language-provider";
 import { Badge } from "@/components/ui/badge";
@@ -61,38 +61,46 @@ function MediaSlideshow({
     return () => window.clearInterval(timer);
   }, [urls.length, isHovered]);
 
+  // Only the current slide and its immediate neighbours stay mounted. Keeping
+  // all 18 SprintApp slides in the DOM meant the browser fetched every one of
+  // them the moment the card scrolled into view.
+  const isNearCurrent = (i: number) => {
+    if (urls.length <= 3) return true;
+    const distance = Math.min(
+      Math.abs(i - currentIndex),
+      urls.length - Math.abs(i - currentIndex)
+    );
+    return distance <= 1;
+  };
+
   return (
     <div
       className="relative h-full w-full"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {urls.map((url, i) => (
-        <div 
-          key={`${url}-${i}`}
-          className={cn(
-            "absolute inset-0 transition-opacity duration-700",
-            i === currentIndex ? "opacity-100" : "opacity-0"
-          )}
-        >
-          <div 
-            className="absolute inset-0 bg-cover bg-center blur-2xl opacity-40 scale-110"
-            style={{ backgroundImage: `url(${url})` }}
-          />
-          <Image
-            src={url}
-            alt={`Slide ${i + 1}`}
-            fill
-            loading={eager && i === 0 ? "eager" : "lazy"}
-            sizes={variant === "card" ? "(max-width: 768px) 100vw, (max-width: 1400px) 50vw, 33vw" : "100vw"}
-            quality={90}
+      <div className="absolute inset-0 bg-linear-to-br from-primary/10 via-background to-background" />
+
+      {urls.map((url, i) =>
+        isNearCurrent(i) ? (
+          <div
+            key={`${url}-${i}`}
             className={cn(
-              "transition-transform duration-700 relative z-10",
-              "object-contain"
+              "absolute inset-0 transition-opacity duration-700",
+              i === currentIndex ? "opacity-100" : "opacity-0"
             )}
-          />
-        </div>
-      ))}
+          >
+            <Image
+              src={url}
+              alt={`Slide ${i + 1}`}
+              fill
+              loading={eager && i === 0 ? "eager" : "lazy"}
+              sizes={variant === "card" ? "(max-width: 768px) 100vw, (max-width: 1400px) 50vw, 33vw" : "100vw"}
+              className="relative z-10 object-contain"
+            />
+          </div>
+        ) : null
+      )}
 
       <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-black/28 via-transparent to-transparent" />
 
@@ -139,55 +147,60 @@ function MediaShowcase({ project, lang, eager = false, className, variant = "car
   }
 
   if (project.mediaType === "video" && project.videoUrl) {
-    const videoUrl = project.videoUrl;
-    const placeholderUrl = project.imageUrl;
+    const posterUrl = project.posterUrl ?? project.imageUrl;
+
+    // In the grid we show the poster only. These recordings are 16–32 MB each,
+    // and three of them autoplaying at once was the single heaviest thing on
+    // the page. The real video is mounted by the detail dialog on demand.
+    if (variant === "card") {
+      return (
+        <div className="relative h-full w-full bg-linear-to-br from-primary/12 via-background to-background">
+          {posterUrl && (
+            <Image
+              src={posterUrl}
+              alt={project.title[lang]}
+              fill
+              loading={eager ? "eager" : "lazy"}
+              sizes="(max-width: 768px) 100vw, (max-width: 1400px) 50vw, 33vw"
+              className={cn("relative z-10 object-contain", className)}
+            />
+          )}
+          <div className="absolute inset-0 z-20 flex items-center justify-center">
+            <span className="flex size-14 items-center justify-center rounded-full border border-white/25 bg-black/45 text-white shadow-lg backdrop-blur-md transition-transform duration-300 md:group-hover:scale-110">
+              <Play className="size-6 translate-x-px fill-current" />
+            </span>
+          </div>
+        </div>
+      );
+    }
 
     return (
-      <div className="relative h-full w-full bg-black/20">
-        {placeholderUrl && (
-          <div 
-            className="absolute inset-0 bg-cover bg-center blur-2xl opacity-35 scale-110"
-            style={{ backgroundImage: `url(${placeholderUrl})` }}
-          />
-        )}
+      <div className="relative h-full w-full bg-black">
         <video
-          src={videoUrl}
+          src={project.videoUrl}
           autoPlay
           loop
           muted
           playsInline
-          preload="metadata"
-          className={cn(
-            "h-full w-full relative z-10",
-            "object-contain",
-            className
-          )}
-          poster={placeholderUrl}
+          controls
+          preload="auto"
+          poster={posterUrl}
+          className={cn("relative z-10 h-full w-full object-contain", className)}
         />
       </div>
     );
   }
 
   if (project.imageUrl) {
-    const imageUrl = project.imageUrl;
     return (
-      <div className="relative h-full w-full bg-black/5">
-        <div 
-          className="absolute inset-0 bg-cover bg-center blur-3xl opacity-45 scale-110"
-          style={{ backgroundImage: `url(${imageUrl})` }}
-        />
+      <div className="relative h-full w-full bg-linear-to-br from-primary/8 via-background to-background">
         <Image
-          src={imageUrl}
+          src={project.imageUrl}
           alt={project.title[lang]}
           fill
           loading={eager ? "eager" : "lazy"}
           sizes={variant === "card" ? "(max-width: 768px) 100vw, (max-width: 1400px) 50vw, 33vw" : "100vw"}
-          quality={90}
-          className={cn(
-            "relative z-10",
-            "object-contain",
-            className
-          )}
+          className={cn("relative z-10 object-contain", className)}
         />
       </div>
     );
@@ -361,30 +374,27 @@ interface ProjectCardProps {
 export function ProjectCard({ project, index }: ProjectCardProps) {
   const { t, lang } = useLanguage();
   const [open, setOpen] = useState(false);
-  const cardRef = useRef<HTMLDivElement>(null);
 
-  const { scrollYProgress } = useScroll({
-    target: cardRef,
-    offset: ["start end", "end start"],
-  });
-
-  const translateY = useTransform(scrollYProgress, [0, 1], [-16, 16]);
   const eagerMedia = project.featured && index < 2;
   const detailButtonLabel = lang === "en" ? "View details" : "Ver detalles";
 
   return (
     <>
+      {/*
+        No per-card `useScroll` parallax and no `layout` prop: with a dozen
+        cards on screen that meant a dozen scroll-linked springs plus a full
+        layout measurement pass on every render, which is what made scrolling
+        feel heavy. The hover lift below is pure CSS.
+      */}
       <motion.div
-        ref={cardRef}
         role="button"
         tabIndex={0}
-        layout
-        initial={{ opacity: 0, y: 30 }}
+        initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
+        viewport={{ once: true, margin: "-80px" }}
         transition={{
-          delay: index * 0.1,
-          duration: 0.5,
+          delay: Math.min(index, 3) * 0.08,
+          duration: 0.45,
           ease: [0.23, 1, 0.32, 1],
         }}
         onClick={() => setOpen(true)}
@@ -397,12 +407,9 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
         className="group relative flex w-full flex-col overflow-hidden rounded-3xl glass text-left transition-all duration-500 md:hover:-translate-y-2 md:hover:border-primary/30 md:hover:shadow-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
       >
         <div className="relative aspect-[16/10] overflow-hidden bg-black/10">
-          <motion.div
-            style={{ y: translateY }}
-            className="relative -top-[6%] h-[112%] w-full transition-transform duration-700 ease-out md:group-hover:scale-[1.03]"
-          >
+          <div className="h-full w-full transition-transform duration-700 ease-out md:group-hover:scale-[1.03]">
             <MediaShowcase project={project} lang={lang} eager={eagerMedia} />
-          </motion.div>
+          </div>
 
           <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-black/32 via-transparent to-transparent opacity-70 transition-opacity duration-300 md:group-hover:opacity-85" />
 

@@ -1,58 +1,49 @@
 "use client";
 
-import React, { useRef } from "react";
-import { motion, useScroll, useTransform, useSpring } from "framer-motion";
+import React from "react";
+import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { useMotionBudget } from "@/hooks/use-motion-budget";
 
 interface ScrollRevealProps {
   children: React.ReactNode;
-  variant?: "fade" | "scale" | "slide-up" | "parallax";
+  variant?: "fade" | "scale" | "slide-up";
   strength?: number;
   className?: string;
 }
 
-export function ScrollReveal({ 
-  children, 
-  variant = "fade", 
+/**
+ * Reveals its children once, the first time they scroll into view.
+ *
+ * The previous implementation drove opacity from scroll position through a
+ * spring, which had two problems: it built four springs per instance and only
+ * ever read one of them, and the `fade` variant faded content back out as the
+ * section left the viewport — so sections went blank while still on screen.
+ */
+export function ScrollReveal({
+  children,
+  variant = "fade",
   strength = 40,
-  className 
+  className,
 }: ScrollRevealProps) {
-  const ref = useRef<HTMLDivElement>(null);
-  
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"],
-  });
+  const motionBudget = useMotionBudget();
 
-  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
-  const scale = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0.95, 1, 1, 0.95]);
-  const y = useTransform(scrollYProgress, [0, 0.2], [strength, 0]);
-  const parallax = useTransform(scrollYProgress, [0, 1], [-strength, strength]);
+  if (motionBudget === "none") {
+    return <div className={cn("relative", className)}>{children}</div>;
+  }
 
-  const smoothOpacity = useSpring(opacity, { damping: 20, stiffness: 100 });
-  const smoothScale = useSpring(scale, { damping: 20, stiffness: 100 });
-  const smoothY = useSpring(y, { damping: 20, stiffness: 100 });
-  const smoothParallax = useSpring(parallax, { damping: 20, stiffness: 100 });
-
-  const getStyle = () => {
-    switch (variant) {
-      case "fade":
-        return { opacity: smoothOpacity };
-      case "scale":
-        return { opacity: smoothOpacity, scale: smoothScale };
-      case "slide-up":
-        return { opacity: smoothOpacity, y: smoothY };
-      case "parallax":
-        return { y: smoothParallax };
-      default:
-        return {};
-    }
-  };
+  const hidden = {
+    fade: { opacity: 0 },
+    scale: { opacity: 0, scale: 0.97 },
+    "slide-up": { opacity: 0, y: strength },
+  }[variant];
 
   return (
     <motion.div
-      ref={ref}
-      style={getStyle()}
+      initial={hidden}
+      whileInView={{ opacity: 1, scale: 1, y: 0 }}
+      viewport={{ once: true, margin: "-60px" }}
+      transition={{ duration: 0.55, ease: [0.23, 1, 0.32, 1] }}
       className={cn("relative", className)}
     >
       {children}

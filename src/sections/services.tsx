@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Container } from "@/components/ui/container";
+import { SectionHeading } from "@/components/ui/section-heading";
 import { useLanguage } from "@/components/providers/language-provider";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
 import { servicesData } from "@/data/services";
@@ -27,12 +28,7 @@ export const ServicesSection = () => {
       <Container>
         <ScrollReveal variant="fade">
           <div className="flex flex-col gap-12">
-            <div className="flex flex-col gap-4 max-w-2xl">
-              <h2 className="text-3xl md:text-4xl font-bold tracking-tight bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
-                {t.sectionTitles.services}
-              </h2>
-              <div className="h-1 w-20 bg-primary/20 rounded-full" />
-            </div>
+            <SectionHeading title={t.sectionTitles.services} />
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {servicesData.map((service, index) => (
@@ -45,12 +41,12 @@ export const ServicesSection = () => {
                   whileHover={{ y: -8 }}
                   className="group relative h-full"
                 >
-                  <div className="h-full p-8 rounded-3xl border border-white/10 dark:border-white/5 bg-white/5 dark:bg-white/[0.02] backdrop-blur-xl transition-all duration-500 overflow-hidden shadow-2xl shadow-black/5 group-hover:border-primary/20">
+                  <div className="surface h-full overflow-hidden p-8 transition-all duration-500 group-hover:border-primary/30">
                     {/* Background Glow */}
                     <div className="absolute -right-20 -top-20 size-40 bg-primary/10 blur-[80px] group-hover:bg-primary/20 transition-all duration-500" />
                     
                     <div className="relative z-10 flex flex-col h-full gap-6">
-                      <div className="size-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:scale-110 group-hover:bg-primary/10 group-hover:border-primary/30 transition-all duration-500">
+                      <div className="flex size-14 items-center justify-center rounded-2xl border border-border/60 bg-muted/50 transition-all duration-500 group-hover:scale-110 group-hover:border-primary/30 group-hover:bg-primary/10">
                         {getIcon(service.icon)}
                       </div>
 

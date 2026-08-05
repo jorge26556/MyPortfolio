@@ -24,6 +24,11 @@
 .DS_Store
 *.pem
 
+# Source recordings / raw exports. Only the optimized copies under public/ ship.
+/src/Records-Projects/
+/src/AssetsProjects/
+/src/CVs/
+
 # debug
 npm-debug.log*
 yarn-debug.log*
