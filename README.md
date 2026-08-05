@@ -29,7 +29,9 @@ npm run dev
 | `npm run build` | Build de producción → `out/` |
 | `npm run lint` | ESLint |
 | `npm run optimize:images` | Convierte a WebP todo `public/projects/**` |
+| `npm run optimize:videos` | Recomprime los MP4 de `public/projects/videos` |
 | `npm run generate:og` | Regenera `public/og-image.png` |
+| `npm run generate:icons` | Regenera favicon e iconos de `src/app/` |
 
 ## Añadir un proyecto
 
@@ -46,6 +48,11 @@ muestra `posterUrl` y el `<video>` solo se monta al abrir el modal de detalle.
 Todo proyecto con `mediaType: "video"` debe traer su `posterUrl`. Para generarlo, exporta
 un fotograma representativo (no la pantalla de login) a `public/projects/posters/<slug>.jpg`
 y pásalo por `npm run optimize:images`.
+
+Tras añadir un MP4 nuevo ejecuta `npm run optimize:videos`. Las grabaciones de pantalla
+salen del grabador con un bitrate de cámara: los tres originales pesaban 62 MB y quedaron
+en 3.7 MB sin degradación visible. El script también inserta keyframes cada ~4 s, sin los
+cuales el navegador no puede hacer seek dentro del video.
 
 ## Rendimiento
 

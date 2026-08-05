@@ -3,7 +3,6 @@ import { Inter } from "next/font/google";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { LanguageProvider } from "@/components/providers/language-provider";
 import { Navbar } from "@/components/layout/navbar";
-import { CustomCursor } from "@/components/ui/custom-cursor";
 import { profileData } from "@/data/profile";
 import "./globals.css";
 
@@ -128,7 +127,6 @@ export default function RootLayout({
           <LanguageProvider>
             <Navbar />
             {children}
-            <CustomCursor />
           </LanguageProvider>
         </ThemeProvider>
       </body>

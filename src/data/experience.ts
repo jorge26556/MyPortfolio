@@ -4,8 +4,9 @@ export interface Experience {
   id: string;
   company: string;
   role: BilingualText;
-  startDate: string;
-  endDate: string;
+  /** Bilingual: month names and "Actualidad" must not leak into the English view. */
+  startDate: BilingualText;
+  endDate: BilingualText;
   description: BilingualText[];
   technologies: string[];
   companyUrl?: string;
@@ -20,8 +21,8 @@ export const experienceData: Experience[] = [
       es: "Process Excellence Analyst II",
       en: "Process Excellence Analyst II",
     },
-    startDate: "Mayo 2025",
-    endDate: "Actualidad",
+    startDate: { es: "Mayo 2025", en: "May 2025" },
+    endDate: { es: "Actualidad", en: "Present" },
     location: {
       es: "Colombia",
       en: "Colombia",
@@ -49,8 +50,8 @@ export const experienceData: Experience[] = [
       es: "Prácticas en Banco de la República",
       en: "Internship at Banco de la República",
     },
-    startDate: "Julio 2024",
-    endDate: "Diciembre 2024",
+    startDate: { es: "Julio 2024", en: "July 2024" },
+    endDate: { es: "Diciembre 2024", en: "December 2024" },
     location: {
       es: "Bogotá, Colombia",
       en: "Bogota, Colombia",
@@ -74,8 +75,8 @@ export const experienceData: Experience[] = [
       es: "Lifeguard & Boat Instructor",
       en: "Lifeguard & Boat Instructor",
     },
-    startDate: "2022",
-    endDate: "2023",
+    startDate: { es: "2022", en: "2022" },
+    endDate: { es: "2023", en: "2023" },
     location: {
       es: "Ohio & Arizona, Estados Unidos",
       en: "Ohio & Arizona, United States",

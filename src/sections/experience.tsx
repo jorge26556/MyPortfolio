@@ -34,7 +34,9 @@ export const ExperienceSection = () => {
           <SectionHeading title={t.sectionTitles.experience} />
 
           <div className="relative mt-20">
-            <div className="absolute top-0 bottom-0 left-4 hidden w-[2px] bg-border/20 sm:block md:left-1/2 md:-translate-x-1/2">
+            {/* Only from `md`: below that the cards are full width, so the rail
+                was drawing straight through them instead of beside them. */}
+            <div className="absolute top-0 bottom-0 left-1/2 hidden w-[2px] -translate-x-1/2 bg-border/40 md:block">
               <motion.div
                 style={{ scaleY, originY: 0 }}
                 className="absolute inset-0 bg-linear-to-b from-primary via-primary/50 to-transparent"
@@ -57,7 +59,7 @@ export const ExperienceSection = () => {
                     index % 2 === 0 ? "md:flex-row-reverse" : ""
                   }`}
                 >
-                  <div className="absolute top-0 left-4 z-10 hidden sm:block md:left-1/2 md:-translate-x-1/2">
+                  <div className="absolute top-0 left-1/2 z-10 hidden -translate-x-1/2 md:block">
                     <div className="relative flex h-3 w-3 items-center justify-center">
                       <motion.div
                         initial={{ scale: 0 }}
@@ -69,12 +71,12 @@ export const ExperienceSection = () => {
                   </div>
 
                   <div className="group w-full md:w-[45%]">
-                    <div className="glass relative rounded-[2.5rem] p-8 transition-all duration-500 hover:border-primary/30 group-hover:-translate-y-2 group-hover:shadow-primary/5">
+                    <div className="glass relative rounded-3xl p-8 transition-all duration-500 group-hover:-translate-y-2 group-hover:border-primary/30 group-hover:shadow-primary/5">
                       <div className="flex flex-col gap-6">
                         <div className="flex flex-wrap items-center justify-between gap-4">
                           <span className="flex items-center gap-2 rounded-full border border-primary/10 bg-primary/5 px-4 py-1.5 text-[10px] font-bold uppercase tracking-[0.2em] text-primary">
                             <Calendar className="size-3" />
-                            {exp.startDate} — {exp.endDate}
+                            {exp.startDate[lang]} — {exp.endDate[lang]}
                           </span>
                           {exp.location && (
                             <span className="flex items-center gap-1.5 text-xs font-medium text-muted-foreground/80">
