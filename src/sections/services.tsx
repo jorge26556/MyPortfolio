@@ -8,16 +8,22 @@ import { ScrollReveal } from "@/components/ui/scroll-reveal";
 import { servicesData } from "@/data/services";
 import { Code, Layout, Server, Sparkles, Database, Bot, Zap } from "lucide-react";
 
+// The 400-weight tints were chosen against the dark theme and washed out on
+// white. Each accent now has a darker light-mode partner.
+const ICONS: Record<string, { Icon: typeof Code; color: string }> = {
+  "code-icon": { Icon: Code, color: "text-blue-600 dark:text-blue-400" },
+  "server-icon": { Icon: Server, color: "text-purple-600 dark:text-purple-400" },
+  "sparkles-icon": { Icon: Zap, color: "text-amber-600 dark:text-amber-400" },
+  "database-icon": { Icon: Database, color: "text-orange-600 dark:text-orange-400" },
+  "design-pencil-icon": { Icon: Layout, color: "text-pink-600 dark:text-pink-400" },
+  "ai-icon": { Icon: Bot, color: "text-indigo-600 dark:text-indigo-400" },
+};
+
 const getIcon = (iconName: string) => {
-  switch (iconName) {
-    case "code-icon": return <Code className="size-6 text-blue-400" />;
-    case "server-icon": return <Server className="size-6 text-purple-400" />;
-    case "sparkles-icon": return <Zap className="size-6 text-yellow-400" />;
-    case "database-icon": return <Database className="size-6 text-orange-400" />;
-    case "design-pencil-icon": return <Layout className="size-6 text-pink-400" />;
-    case "ai-icon": return <Bot className="size-6 text-indigo-400" />;
-    default: return <Sparkles className="size-6 text-primary" />;
-  }
+  const entry = ICONS[iconName];
+  if (!entry) return <Sparkles className="size-6 text-primary" />;
+  const { Icon, color } = entry;
+  return <Icon className={`size-6 ${color}`} />;
 };
 
 export const ServicesSection = () => {
@@ -37,11 +43,13 @@ export const ServicesSection = () => {
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  whileHover={{ y: -8 }}
+                  transition={{ duration: 0.5, delay: Math.min(index, 3) * 0.08 }}
                   className="group relative h-full"
                 >
-                  <div className="surface h-full overflow-hidden p-8 transition-all duration-500 group-hover:border-primary/30">
+                  {/* Hover lift is CSS here, matching the project cards. A
+                      framer `whileHover` on every card meant six more JS-driven
+                      animations for something a transform can do for free. */}
+                  <div className="surface h-full overflow-hidden p-8 transition-all duration-500 group-hover:-translate-y-2 group-hover:border-primary/30">
                     {/* Background Glow */}
                     <div className="absolute -right-20 -top-20 size-40 bg-primary/10 blur-[80px] group-hover:bg-primary/20 transition-all duration-500" />
                     
@@ -61,7 +69,7 @@ export const ServicesSection = () => {
                         )}
                       </div>
 
-                      <ul className="flex flex-col gap-3 mt-auto pt-6 border-t border-white/5">
+                      <ul className="mt-auto flex flex-col gap-3 border-t border-border/60 pt-6">
                         {service.features.map((feature, i) => (
                           <li key={i} className="flex items-center gap-3 text-xs font-semibold tracking-wide text-foreground/70 uppercase">
                             <span className="size-1.5 rounded-full bg-primary/60" />
