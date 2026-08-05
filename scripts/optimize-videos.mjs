@@ -21,6 +21,12 @@
  *
  * Re-running is safe: already-optimized files are skipped via a marker comment
  * in the container metadata.
+ *
+ * NOTE — MyAccountingApp-Video.mp4 is not reproducible from this script alone.
+ * It was additionally trimmed (to drop a login screen and a Chrome
+ * "save password?" prompt) and has its top-right corner blurred to redact a
+ * real email address that the app renders in its header. If that recording is
+ * ever replaced, redo both steps; see the README.
  */
 import { execFile } from "node:child_process";
 import { promisify } from "node:util";

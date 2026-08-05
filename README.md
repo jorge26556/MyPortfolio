@@ -54,6 +54,26 @@ salen del grabador con un bitrate de cámara: los tres originales pesaban 62 MB 
 en 3.7 MB sin degradación visible. El script también inserta keyframes cada ~4 s, sin los
 cuales el navegador no puede hacer seek dentro del video.
 
+### Revisa cada grabación antes de publicarla
+
+Una captura de pantalla muestra todo lo que había en pantalla, incluida la interfaz de la
+propia sesión. Antes de subir una, míralas entera buscando: correos y nombres reales,
+pantallas de login con credenciales prellenadas, y diálogos del navegador (el popup
+"¿Guardar contraseña?" de Chrome llegó a aparecer en una de estas grabaciones).
+
+`MyAccountingApp-Video.mp4` lleva dos pasos extra sobre el script:
+
+```bash
+ffmpeg -y -ss 11 -i original.mp4 \
+  -vf "scale='min(1280,iw)':-2,split[a][b];[b]crop=442:76:838:4,boxblur=18:2[bl];[a][bl]overlay=838:4" \
+  -c:v libx264 -crf 30 -preset slow -pix_fmt yuv420p -g 120 -an -movflags +faststart out.mp4
+```
+
+El recorte de 11 s elimina el login y el popup de Chrome; el desenfoque tapa el correo que
+la app pinta en su cabecera. Cubre **toda** la esquina superior derecha a propósito: la
+grabación cambia de zoom a mitad, así que la píldora del usuario aparece en tres
+posiciones distintas y una caja ajustada dejaba escapar el correo en algunas.
+
 ## Rendimiento
 
 Decisiones deliberadas que conviene no revertir sin medir:
