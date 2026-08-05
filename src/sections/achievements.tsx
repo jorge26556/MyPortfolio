@@ -56,7 +56,7 @@ export const AchievementsSection = () => {
                           </h3>
                           <span className="mt-1 text-xs font-semibold uppercase tracking-widest text-primary/60">
                             {achievement.issuer ? achievement.issuer[lang] : ""}
-                            {achievement.date ? ` • ${achievement.date}` : ""}
+                            {achievement.date ? ` • ${achievement.date[lang]}` : ""}
                           </span>
                         </div>
                         {achievement.description && (
