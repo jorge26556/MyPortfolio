@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import { motion, useScroll, useSpring } from "framer-motion";
 import { Container } from "@/components/ui/container";
+import { SectionHeading } from "@/components/ui/section-heading";
 import { useLanguage } from "@/components/providers/language-provider";
 import { experienceData } from "@/data/experience";
 import { Calendar, Briefcase, MapPin } from "lucide-react";
@@ -30,12 +31,7 @@ export const ExperienceSection = () => {
     >
       <Container>
         <div className="flex flex-col gap-12">
-          <div className="flex max-w-2xl flex-col gap-4">
-            <h2 className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-3xl font-bold tracking-tight text-transparent md:text-4xl">
-              {t.sectionTitles.experience}
-            </h2>
-            <div className="h-1 w-20 rounded-full bg-primary/20" />
-          </div>
+          <SectionHeading title={t.sectionTitles.experience} />
 
           <div className="relative mt-20">
             <div className="absolute top-0 bottom-0 left-4 hidden w-[2px] bg-border/20 sm:block md:left-1/2 md:-translate-x-1/2">

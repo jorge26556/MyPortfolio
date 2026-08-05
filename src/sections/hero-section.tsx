@@ -9,17 +9,24 @@ import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { Magnetic } from "@/components/ui/magnetic";
 import { SocialLinks } from "@/components/ui/social-links";
+// Imported from its own module, never from hero-canvas: a static import there
+// would drag three.js into the main bundle for every visitor.
+import { HeroCanvasFallback } from "@/components/ui/hero-canvas-fallback";
+import { useMotionBudget } from "@/hooks/use-motion-budget";
 
+// Only reached when the device can afford it, so three.js (~290 KB gzip) is
+// never fetched on the machines that would choke on it.
 const HeroCanvas = dynamic(
   () => import("@/components/ui/hero-canvas").then((mod) => mod.HeroCanvas),
   {
     ssr: false,
-    loading: () => <div className="absolute inset-0 bg-primary/5 animate-pulse" />,
+    loading: () => <HeroCanvasFallback />,
   }
 );
 
 export function HeroSection() {
   const { t, lang } = useLanguage();
+  const motionBudget = useMotionBudget();
   const heroRoles = t.hero.role
     .split("|")
     .map((role) => role.trim())
@@ -38,7 +45,10 @@ export function HeroSection() {
   const textX = useTransform(smoothX, [-0.5, 0.5], [-16, 16]);
   const textY = useTransform(smoothY, [-0.5, 0.5], [-16, 16]);
 
+  const allowPointerMotion = motionBudget !== "none";
+
   const handleMouseMove = (e: React.MouseEvent) => {
+    if (!allowPointerMotion) return;
     const rect = e.currentTarget.getBoundingClientRect();
     const x = (e.clientX - rect.left) / rect.width - 0.5;
     const y = (e.clientY - rect.top) / rect.height - 0.5;
@@ -57,7 +67,11 @@ export function HeroSection() {
       className="relative flex min-h-svh items-center overflow-hidden pt-24 pb-14 sm:pt-28 sm:pb-20 lg:min-h-screen lg:pt-32 lg:pb-24"
     >
       <div className="absolute inset-0 z-0">
-        <HeroCanvas pointerX={smoothX} pointerY={smoothY} />
+        {motionBudget === "full" ? (
+          <HeroCanvas pointerX={smoothX} pointerY={smoothY} />
+        ) : (
+          <HeroCanvasFallback animate={motionBudget === "reduced"} />
+        )}
       </div>
 
       <Container className="relative z-10">

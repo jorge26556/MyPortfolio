@@ -26,7 +26,7 @@ export const Footer = () => {
           <div className="flex flex-col items-start justify-between gap-8 md:flex-row md:items-center">
             <div className="flex flex-col gap-4">
               <span className="bg-linear-to-r from-foreground to-muted-foreground bg-clip-text text-2xl font-bold tracking-tighter text-transparent">
-                Jorge Gaitan
+                {profileData.name}
               </span>
               <p className="max-w-xs text-sm leading-relaxed text-muted-foreground">
                 {profileData.bio}
@@ -48,7 +48,10 @@ export const Footer = () => {
 
           <div className="flex flex-col items-center justify-between gap-8 border-t border-border/10 pt-8 md:flex-row">
             <p className="order-2 text-sm font-medium tracking-tight text-muted-foreground md:order-1">
-              &copy; {currentYear} {profileData.name}. All rights reserved. Ingeniero de Sistemas | Power Platform & AI
+              &copy; {currentYear} {profileData.name}.{" "}
+              {lang === "en"
+                ? "All rights reserved. Systems Engineer · Power Platform & AI"
+                : "Todos los derechos reservados. Ingeniero de Sistemas · Power Platform & AI"}
             </p>
 
             <div className="order-1 flex items-center gap-6 md:order-2">

@@ -8,6 +8,12 @@ export interface Project {
   mediaType: "image" | "video" | "slideshow";
   imageUrl?: string;
   videoUrl?: string;
+  /**
+   * Still frame shown in the card for video projects. The video itself is only
+   * fetched when the detail dialog opens, so this is what visitors actually
+   * download on first paint — every video project should have one.
+   */
+  posterUrl?: string;
   slideshowUrls?: string[];
   mediaCaption?: BilingualText;
   tags: string[];
@@ -20,7 +26,7 @@ export interface Project {
 }
 
 const createSlideUrls = (folder: string, indexes: number[]) =>
-  indexes.map((index) => `/projects/slides/${folder}/${index}.png`);
+  indexes.map((index) => `/projects/slides/${folder}/${index}.webp`);
 
 const sprintAppSlides = createSlideUrls(
   "sprintapp",
@@ -48,7 +54,7 @@ export const projectsData: Project[] = [
       en: "Mobile health-focused project designed to provide an accessible experience for consultation, education, and user guidance around dyslipidemia.",
     },
     mediaType: "image",
-    imageUrl: "/projects/images/dislipidemiasapp-mockup3.png",
+    imageUrl: "/projects/images/dislipidemiasapp-mockup3.webp",
     tags: ["Kotlin", "Android"],
     category: "Mobile",
     featured: true,
@@ -68,7 +74,7 @@ export const projectsData: Project[] = [
       en: "Lightweight tool for quick calculations focused on clarity, immediate usability, and a simple interface for everyday contexts.",
     },
     mediaType: "image",
-    imageUrl: "/projects/images/calculadoramultiple.jpg",
+    imageUrl: "/projects/images/calculadoramultiple.webp",
     tags: ["JavaScript", "HTML", "CSS"],
     category: "Web",
     featured: false,
@@ -88,7 +94,7 @@ export const projectsData: Project[] = [
       en: "Interoperability project focused on centralizing and exposing key data from the Colombian maritime domain in a reusable and clear structure for external consumption.",
     },
     mediaType: "image",
-    imageUrl: "/projects/images/capa-de-interoperablidad-img.png",
+    imageUrl: "/projects/images/capa-de-interoperablidad-img.webp",
     tags: ["Node.js", "REST API", "JSON"],
     category: "Web",
     featured: false,
@@ -108,7 +114,7 @@ export const projectsData: Project[] = [
       en: "Desktop application designed to practice logic and user experience in graphical interfaces while keeping interactions direct and functional.",
     },
     mediaType: "image",
-    imageUrl: "/projects/images/calculadora-funciones-basicas.png",
+    imageUrl: "/projects/images/calculadora-funciones-basicas.webp",
     tags: ["Python"],
     category: "Other",
     featured: false,
@@ -128,7 +134,7 @@ export const projectsData: Project[] = [
       en: "Project focused on basic security and user productivity, with strength validation and quick secure credential generation.",
     },
     mediaType: "image",
-    imageUrl: "/projects/images/generador-de-contrasenas.png",
+    imageUrl: "/projects/images/generador-de-contrasenas.webp",
     tags: ["Python", "Tkinter", "Regex"],
     category: "Other",
     featured: false,
@@ -148,7 +154,7 @@ export const projectsData: Project[] = [
       en: "Website focused on digital presence and commercial presentation, with emphasis on visual design, service organization, and efficient publishing.",
     },
     mediaType: "image",
-    imageUrl: "/projects/images/dyangoTech.png",
+    imageUrl: "/projects/images/dyangoTech.webp",
     tags: ["WordPress", "Elementor", "Hostinger"],
     category: "Web",
     featured: false,
@@ -169,6 +175,7 @@ export const projectsData: Project[] = [
     },
     mediaType: "video",
     videoUrl: "/projects/videos/clinReportAI-video.mp4",
+    posterUrl: "/projects/posters/clinreport-ai.webp",
     tags: ["Django", "Django REST Framework", "Python", "React", "TypeScript", "OpenAI API"],
     category: "AI",
     featured: true,
@@ -189,6 +196,7 @@ export const projectsData: Project[] = [
     },
     mediaType: "video",
     videoUrl: "/projects/videos/ControlHorarios-Video.mp4",
+    posterUrl: "/projects/posters/control-horarios.webp",
     tags: ["Vite", "JavaScript", "Supabase", "PostgreSQL"],
     category: "Web",
     featured: true,
@@ -209,6 +217,7 @@ export const projectsData: Project[] = [
     },
     mediaType: "video",
     videoUrl: "/projects/videos/MyAccountingApp-Video.mp4",
+    posterUrl: "/projects/posters/my-accounting-app.webp",
     tags: ["React", "TypeScript", "CSS", "Supabase", "Recharts", "Lucide", "Vercel"],
     category: "Web",
     featured: false,
@@ -249,7 +258,7 @@ export const projectsData: Project[] = [
       en: "The public view keeps a safe product demo while preserving the focus on functional flow, operational continuity, and the overall enterprise experience.",
     },
     mediaType: "image",
-    imageUrl: "/projects/images/FacturacionAPP.png",
+    imageUrl: "/projects/images/FacturacionAPP.webp",
     tags: ["Power Apps", "Power Automate", "SQL", "Dataverse"],
     category: "Power Platform",
     featured: false,

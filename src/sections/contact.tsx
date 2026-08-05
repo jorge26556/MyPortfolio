@@ -15,11 +15,6 @@ export const ContactSection = () => {
   const { lang, t } = useLanguage();
   const [copied, setCopied] = useState(false);
 
-  const contactSummary =
-    lang === "en"
-      ? "I am a Full-Stack and Power Platform Developer passionate about creating pleasant, intuitive, functional, and user-centered applications. I also design enterprise solutions and automations tailored to real business needs."
-      : "Soy desarrollador Full-Stack y Power Platform Developer, apasionado por crear aplicaciones agradables, intuitivas, funcionales y centradas en el usuario. También diseño soluciones empresariales y automatizaciones ajustadas a necesidades reales de negocio.";
-
   const copyEmail = () => {
     navigator.clipboard.writeText(profileData.email);
     setCopied(true);

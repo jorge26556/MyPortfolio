@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useRef } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import { useFrame } from "@react-three/fiber";
 import type { MotionValue } from "framer-motion";
 import * as THREE from "three";
@@ -17,7 +17,11 @@ export function FloatingBlob({ pointerX, pointerY, isDark }: FloatingBlobProps) 
   const shellRef = useRef<THREE.Mesh>(null);
   const innerRef = useRef<THREE.Mesh>(null);
 
-  const geometry = useMemo(() => new THREE.IcosahedronGeometry(1.12, 24), []);
+  // Detail 6 is ~980 triangles and still reads as a smooth sphere at this size.
+  // The previous value of 24 built 12,500 triangles that were drawn three times
+  // every frame for no visible gain.
+  const geometry = useMemo(() => new THREE.IcosahedronGeometry(1.12, 6), []);
+  useEffect(() => () => geometry.dispose(), [geometry]);
 
   const palette = isDark
     ? {
@@ -25,7 +29,7 @@ export function FloatingBlob({ pointerX, pointerY, isDark }: FloatingBlobProps) 
         rim: "#c8c3ff",
         inner: "#5346d7",
         coreOpacity: 0.82,
-        shellOpacity: 0.18,
+        shellOpacity: 0.2,
         innerOpacity: 0.42,
       }
     : {
@@ -33,7 +37,7 @@ export function FloatingBlob({ pointerX, pointerY, isDark }: FloatingBlobProps) 
         rim: "#f3f1ff",
         inner: "#8c7af4",
         coreOpacity: 0.72,
-        shellOpacity: 0.14,
+        shellOpacity: 0.16,
         innerOpacity: 0.28,
       };
 
@@ -73,6 +77,13 @@ export function FloatingBlob({ pointerX, pointerY, isDark }: FloatingBlobProps) 
 
   return (
     <group ref={groupRef} position={[2.08, -0.4, 0.05]}>
+      {/*
+        Only the outer shell uses `transmission`. Each transmissive material
+        makes three.js render the whole scene into a separate target before
+        drawing it, so the old three-transmissive-mesh setup cost four full
+        scene renders per frame. The inner meshes fake the same depth with
+        opacity and clearcoat at a fraction of the price.
+      */}
       <mesh ref={shellRef} geometry={geometry}>
         <meshPhysicalMaterial
           color={palette.rim}
@@ -97,7 +108,6 @@ export function FloatingBlob({ pointerX, pointerY, isDark }: FloatingBlobProps) 
           roughness={0.26}
           metalness={0.04}
           clearcoat={0.45}
-          transmission={0.18}
         />
       </mesh>
 
@@ -110,9 +120,6 @@ export function FloatingBlob({ pointerX, pointerY, isDark }: FloatingBlobProps) 
           metalness={0.06}
           clearcoat={1}
           clearcoatRoughness={0.03}
-          transmission={0.58}
-          thickness={1.35}
-          ior={1.22}
           reflectivity={0.95}
           sheen={1}
           sheenColor="#ffffff"

@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { LanguageSwitcher } from "@/components/ui/language-switcher";
 import { useLanguage } from "@/components/providers/language-provider";
+import { profileData } from "@/data/profile";
 import { cn } from "@/lib/utils";
 
 const NAV_ITEMS = [
@@ -94,13 +95,14 @@ export function Navbar() {
             <a
               href="#home"
               onClick={(e) => handleNavClick(e, "#home")}
-              className="group flex items-center gap-2"
+              className="group flex items-center gap-2.5"
+              aria-label={`${profileData.name} — inicio`}
             >
-              <div className="flex size-8 items-center justify-center rounded-lg bg-primary text-primary-foreground transition-transform duration-200 group-hover:scale-105">
-                <span className="text-sm font-bold">P</span>
+              <div className="flex size-8 items-center justify-center rounded-lg bg-linear-to-br from-primary to-violet-500 text-primary-foreground transition-transform duration-200 group-hover:scale-105">
+                <span className="text-sm font-bold">JG</span>
               </div>
-              <span className="text-lg font-semibold tracking-tight">
-                Portfolio
+              <span className="hidden text-lg font-semibold tracking-tight sm:inline">
+                {profileData.name}
               </span>
             </a>
 

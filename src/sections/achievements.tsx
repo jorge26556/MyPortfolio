@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Container } from "@/components/ui/container";
+import { SectionHeading } from "@/components/ui/section-heading";
 import { useLanguage } from "@/components/providers/language-provider";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
 import { achievementsData } from "@/data/achievements";
@@ -30,12 +31,7 @@ export const AchievementsSection = () => {
       <Container>
         <ScrollReveal variant="slide-up">
           <div className="flex flex-col gap-12">
-            <div className="flex max-w-2xl flex-col gap-4">
-              <h2 className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-3xl font-bold tracking-tight text-transparent md:text-4xl">
-                {t.sectionTitles.achievements}
-              </h2>
-              <div className="h-1 w-20 rounded-full bg-primary/20" />
-            </div>
+            <SectionHeading title={t.sectionTitles.achievements} />
 
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
               {achievementsData.map((achievement, index) => (
@@ -47,9 +43,9 @@ export const AchievementsSection = () => {
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   className="group relative"
                 >
-                  <div className="h-full rounded-2xl border border-white/10 bg-white/5 p-6 shadow-lg shadow-black/5 backdrop-blur-xl transition-all duration-300 hover:border-white/20 hover:bg-white/10 dark:border-white/5 dark:bg-white/[0.02] dark:hover:border-white/10 dark:hover:bg-white/[0.05]">
+                  <div className="surface surface-hover h-full p-6">
                     <div className="flex gap-6">
-                      <div className="flex size-12 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-white/5 shadow-inner transition-all duration-500 group-hover:scale-110 group-hover:border-primary/30 group-hover:bg-primary/5">
+                      <div className="flex size-12 shrink-0 items-center justify-center rounded-xl border border-border/60 bg-muted/50 shadow-inner transition-all duration-500 group-hover:scale-110 group-hover:border-primary/30 group-hover:bg-primary/5">
                         {getCategoryIcon(achievement.category)}
                       </div>
 

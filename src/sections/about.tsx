@@ -1,6 +1,7 @@
 "use client";
 
 import { Container } from "@/components/ui/container";
+import { SectionHeading } from "@/components/ui/section-heading";
 import { useLanguage } from "@/components/providers/language-provider";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
 
@@ -12,12 +13,7 @@ export const AboutSection = () => {
       <Container>
         <ScrollReveal variant="slide-up">
           <div className="flex flex-col gap-12">
-            <div className="flex max-w-2xl flex-col gap-4">
-              <h2 className="text-gradient text-4xl font-bold tracking-tight md:text-5xl">
-                {t.sectionTitles.about}
-              </h2>
-              <div className="h-1 w-20 rounded-full bg-primary/30" />
-            </div>
+            <SectionHeading title={t.sectionTitles.about} />
 
             <div className="glass group relative overflow-hidden rounded-[2rem] p-8 transition-all duration-500 hover:shadow-primary/5 md:p-12">
               <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
