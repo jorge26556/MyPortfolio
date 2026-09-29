@@ -6,7 +6,14 @@ import { useLanguage } from "@/components/providers/language-provider";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
 import { skillsData, SkillCategory } from "@/data/skills";
 
-const categories: SkillCategory[] = ["Frontend", "Backend", "Database", "Cloud & Platform", "Tools"];
+const categories: SkillCategory[] = [
+  "AI & Agents",
+  "Automation & Low-code",
+  "Frontend",
+  "Backend & Data",
+  "Cloud",
+  "Tools",
+];
 
 export const SkillsSection = () => {
   const { t } = useLanguage();

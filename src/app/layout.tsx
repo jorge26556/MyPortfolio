@@ -13,9 +13,9 @@ const inter = Inter({
 });
 
 const SITE_URL = "https://dyangotech.com";
-const TITLE = `${profileData.name} — Full-Stack & Power Platform Developer`;
+const TITLE = `${profileData.name} — AI Engineer & Full-Stack Developer`;
 const DESCRIPTION =
-  "Portafolio de Jorge Gaitán, Ingeniero de Sistemas y Computación. Desarrollo full-stack, aplicaciones móviles y soluciones empresariales con Power Platform, React, Next.js y Django.";
+  "Portafolio de Jorge Gaitán, AI Engineer y Full-Stack Developer. Agentes de IA con MCP, automatización de procesos con Power Platform, Google Workspace y RPA, y plataformas web con React, Next.js y Django.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -29,10 +29,15 @@ export const metadata: Metadata = {
   creator: profileData.name,
   keywords: [
     "Jorge Gaitán",
+    "AI Engineer",
+    "agentes de IA",
+    "MCP",
     "desarrollador full-stack",
     "Power Platform Developer",
     "Power Apps",
     "Power Automate",
+    "Google Apps Script",
+    "RPA",
     "React",
     "Next.js",
     "Django",

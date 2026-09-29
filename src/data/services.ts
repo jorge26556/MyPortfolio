@@ -11,66 +11,40 @@ export interface Service {
 
 export const servicesData: Service[] = [
   {
-    id: "service-web-modern",
+    id: "service-ai",
     title: {
-      es: "Desarrollo de aplicaciones web modernas",
-      en: "Modern web application development",
+      es: "Agentes de IA e integraciones",
+      en: "AI agents and integrations",
     },
     shortDescription: {
-      es: "Interfaces rápidas, limpias y escalables para productos digitales actuales.",
-      en: "Fast, clean, and scalable interfaces for modern digital products.",
+      es: "Agentes que no solo conversan: consultan datos y ejecutan tareas en las herramientas que ya usa tu negocio.",
+      en: "Agents that do more than chat: they query data and carry out tasks in the tools your business already uses.",
     },
-    icon: "code-icon",
+    icon: "ai-icon",
     features: [
       {
-        es: "Frontend moderno con React",
-        en: "Modern frontend with React",
+        es: "Agentes conectados vía MCP y APIs",
+        en: "Agents connected through MCP and APIs",
       },
       {
-        es: "Experiencias responsivas",
-        en: "Responsive experiences",
+        es: "Asistentes con OpenAI API",
+        en: "Assistants built on the OpenAI API",
       },
       {
-        es: "Arquitectura escalable",
-        en: "Scalable architecture",
-      },
-    ],
-  },
-  {
-    id: "service-enterprise",
-    title: {
-      es: "Desarrollo de soluciones empresariales",
-      en: "Enterprise solution development",
-    },
-    shortDescription: {
-      es: "Productos orientados a resolver necesidades reales de operación y negocio.",
-      en: "Products focused on solving real operational and business needs.",
-    },
-    icon: "server-icon",
-    features: [
-      {
-        es: "Flujos operativos digitales",
-        en: "Digital operational workflows",
-      },
-      {
-        es: "Integración con herramientas de negocio",
-        en: "Business tool integration",
-      },
-      {
-        es: "Escalabilidad organizacional",
-        en: "Organizational scalability",
+        es: "Orquestación de flujos con n8n",
+        en: "Workflow orchestration with n8n",
       },
     ],
   },
   {
     id: "service-automation",
     title: {
-      es: "Automatización de procesos",
-      en: "Process automation",
+      es: "Automatización de procesos y RPA",
+      en: "Process automation and RPA",
     },
     shortDescription: {
-      es: "Automatizaciones que reducen tareas repetitivas y mejoran la productividad.",
-      en: "Automations that reduce repetitive tasks and improve productivity.",
+      es: "Automatizaciones que eliminan tareas repetitivas y conectan sistemas que hoy se operan a mano.",
+      en: "Automations that remove repetitive tasks and connect systems that are still operated by hand.",
     },
     icon: "sparkles-icon",
     features: [
@@ -79,12 +53,12 @@ export const servicesData: Service[] = [
         en: "Power Automate flows",
       },
       {
-        es: "Automatización inteligente",
-        en: "Intelligent automation",
+        es: "RPA con Python",
+        en: "RPA with Python",
       },
       {
-        es: "Optimización de tiempos",
-        en: "Time optimization",
+        es: "Integración entre sistemas",
+        en: "System-to-system integration",
       },
     ],
   },
@@ -115,6 +89,58 @@ export const servicesData: Service[] = [
     ],
   },
   {
+    id: "service-google-workspace",
+    title: {
+      es: "Soluciones con Google Workspace",
+      en: "Google Workspace solutions",
+    },
+    shortDescription: {
+      es: "Automatizaciones y herramientas internas sobre Google Sheets y el resto de Google Workspace.",
+      en: "Automations and internal tools built on Google Sheets and the rest of Google Workspace.",
+    },
+    icon: "workspace-icon",
+    features: [
+      {
+        es: "Automatizaciones con Apps Script",
+        en: "Apps Script automations",
+      },
+      {
+        es: "Google Sheets como base operativa",
+        en: "Google Sheets as an operational backbone",
+      },
+      {
+        es: "Integración con APIs externas",
+        en: "External API integration",
+      },
+    ],
+  },
+  {
+    id: "service-fullstack",
+    title: {
+      es: "Plataformas web full-stack",
+      en: "Full-stack web platforms",
+    },
+    shortDescription: {
+      es: "Aplicaciones web completas, del frontend a la base de datos, pensadas para crecer.",
+      en: "Complete web applications, from frontend to database, built to scale.",
+    },
+    icon: "server-icon",
+    features: [
+      {
+        es: "Frontend con React y Next.js",
+        en: "Frontend with React and Next.js",
+      },
+      {
+        es: "Backend con Django o Node.js y SQL",
+        en: "Backend with Django or Node.js and SQL",
+      },
+      {
+        es: "Integración con herramientas de negocio",
+        en: "Business tool integration",
+      },
+    ],
+  },
+  {
     id: "service-uiux",
     title: {
       es: "Diseño UI/UX",
@@ -137,32 +163,6 @@ export const servicesData: Service[] = [
       {
         es: "Diseño orientado a producto",
         en: "Product-oriented design",
-      },
-    ],
-  },
-  {
-    id: "service-ai",
-    title: {
-      es: "Integración de IA en productos digitales",
-      en: "AI integration into digital products",
-    },
-    shortDescription: {
-      es: "Capacidades de IA generativa integradas con contexto, automatización y valor real.",
-      en: "Generative AI capabilities integrated with context, automation, and real value.",
-    },
-    icon: "ai-icon",
-    features: [
-      {
-        es: "OpenAI API y asistentes",
-        en: "OpenAI API and assistants",
-      },
-      {
-        es: "Agentes y orquestación",
-        en: "Agents and orchestration",
-      },
-      {
-        es: "IA aplicada a negocio",
-        en: "AI applied to business",
       },
     ],
   },

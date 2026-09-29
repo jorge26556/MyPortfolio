@@ -14,8 +14,8 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const OUT = path.join(ROOT, "public/og-image.png");
 
 const NAME = "Jorge Gaitán";
-const ROLE = "Full-Stack &amp; Power Platform Developer";
-const TAGLINE = "Aplicaciones, automatizaciones y soluciones empresariales";
+const ROLE = "AI Engineer &amp; Full-Stack Developer";
+const TAGLINE = "Agentes de IA, automatización y plataformas web";
 const DOMAIN = "dyangotech.com";
 
 const FONT = "Segoe UI, Inter, Helvetica Neue, Arial, sans-serif";
@@ -66,7 +66,7 @@ const svg = `
         fill="#94a3b8">${TAGLINE}</text>
 
   <g transform="translate(88, 470)">
-    ${["React", "Next.js", "TypeScript", "Django", "Power Apps"]
+    ${["MCP", "OpenAI API", "Power Apps", "Apps Script", "React"]
       .map((tag, i) => {
         const x = i * 172;
         return `

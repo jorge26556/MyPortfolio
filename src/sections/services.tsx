@@ -6,7 +6,7 @@ import { SectionHeading } from "@/components/ui/section-heading";
 import { useLanguage } from "@/components/providers/language-provider";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
 import { servicesData } from "@/data/services";
-import { Code, Layout, Server, Sparkles, Database, Bot, Zap } from "lucide-react";
+import { Code, Layout, Server, Sparkles, Database, Bot, Zap, Sheet } from "lucide-react";
 
 // The 400-weight tints were chosen against the dark theme and washed out on
 // white. Each accent now has a darker light-mode partner.
@@ -17,6 +17,7 @@ const ICONS: Record<string, { Icon: typeof Code; color: string }> = {
   "database-icon": { Icon: Database, color: "text-orange-600 dark:text-orange-400" },
   "design-pencil-icon": { Icon: Layout, color: "text-pink-600 dark:text-pink-400" },
   "ai-icon": { Icon: Bot, color: "text-indigo-600 dark:text-indigo-400" },
+  "workspace-icon": { Icon: Sheet, color: "text-emerald-600 dark:text-emerald-400" },
 };
 
 const getIcon = (iconName: string) => {

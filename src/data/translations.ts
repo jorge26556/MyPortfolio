@@ -60,7 +60,7 @@ export const translationsData: Record<Language, Translations> = {
     },
     hero: {
       greeting: "Hola, soy",
-      role: "Ingeniero de Sistemas y Computación | Full-Stack Developer | Generative AI Builder | Power Platform Developer | Agentic Software Engineer",
+      role: "AI Engineer & Full-Stack Developer | Agentes de IA & MCP | Automatización & RPA | Power Platform | Google Workspace",
       description:
         "Construyo soluciones digitales que combinan desarrollo, automatización e inteligencia artificial para resolver problemas reales de negocio. Desde aplicaciones web hasta procesos automatizados, mi enfoque es crear productos eficientes, escalables y centrados en el usuario.",
       ctaPrimary: "Ver proyectos",
@@ -77,9 +77,9 @@ export const translationsData: Record<Language, Translations> = {
     },
     about: {
       content: [
-        "Ingeniero de Sistemas y Computación enfocado en desarrollo de aplicaciones, automatización de procesos y soluciones tecnológicas orientadas al negocio, con especial énfasis en Power Platform e inteligencia artificial.",
-        "Experiencia en el diseño e implementación de soluciones con Power Apps, Power Automate, Dataverse, SQL y Python dentro del ecosistema Microsoft, impulsando la optimización y eficiencia operativa.",
-        "Con formación en desarrollo full-stack (React, Node.js, Django), construyo soluciones end-to-end, escalables y centradas en el usuario, integrando IA generativa y automatización (RPA)."
+        "Ingeniero de Sistemas y Computación que construye soluciones de software, automatización e inteligencia artificial para resolver problemas reales de negocio, desde la idea hasta producción.",
+        "Trabajo en tres frentes que se complementan: automatización de procesos con Microsoft Power Platform, Google Workspace, Python y RPA; ingeniería de IA, integrando modelos de lenguaje y agentes con APIs, bases de datos y herramientas externas para que ejecuten tareas reales, no solo conversen; y desarrollo full-stack de plataformas web con React, TypeScript, Node.js, Django y SQL.",
+        "Esa combinación me permite entender un proceso de negocio, decidir si conviene resolverlo con low-code, con código a medida o con IA, y entregarlo integrado con los sistemas que la empresa ya usa."
       ],
     },
     contact: {
@@ -110,7 +110,7 @@ export const translationsData: Record<Language, Translations> = {
     },
     hero: {
       greeting: "Hi, I'm",
-      role: "Systems and Computer Engineer | Full-Stack Developer | Generative AI Builder | Power Platform Developer | Agentic Software Engineer",
+      role: "AI Engineer & Full-Stack Developer | AI Agents & MCP | Automation & RPA | Power Platform | Google Workspace",
       description:
         "I build digital solutions that combine development, automation, and artificial intelligence to solve real business problems. From web applications to automated processes, my focus is on creating efficient, scalable, and user-centered products.",
       ctaPrimary: "View projects",
@@ -127,9 +127,9 @@ export const translationsData: Record<Language, Translations> = {
     },
     about: {
       content: [
-        "Systems and Computer Engineer focused on application development, process automation, and business-oriented technology solutions, with special emphasis on Power Platform and artificial intelligence.",
-        "Experienced in designing and implementing solutions with Power Apps, Power Automate, Dataverse, SQL, and Python within the Microsoft ecosystem, driving operational optimization and efficiency.",
-        "With training in full-stack development (React, Node.js, Django), I build end-to-end, scalable, and user-centered solutions, integrating generative AI and automation (RPA)."
+        "Systems and Computer Engineer building software, automation, and AI solutions that solve real business problems, from idea to production.",
+        "I work across three complementary fronts: process automation with Microsoft Power Platform, Google Workspace, Python, and RPA; AI engineering, connecting language models and agents to APIs, databases, and external tools so they carry out real tasks, not just chat; and full-stack development of web platforms with React, TypeScript, Node.js, Django, and SQL.",
+        "That mix lets me understand a business process, decide whether it's best solved with low-code, custom code, or AI, and deliver it integrated with the systems the company already uses."
       ],
     },
     contact: {
