@@ -28,11 +28,6 @@ export interface Project {
 const createSlideUrls = (folder: string, indexes: number[]) =>
   indexes.map((index) => `/projects/slides/${folder}/${index}.webp`);
 
-const sprintAppSlides = createSlideUrls(
-  "sprintapp",
-  Array.from({ length: 18 }, (_, i) => i + 1)
-);
-
 const barberiAppSlides = createSlideUrls(
   "barberiapp",
   Array.from({ length: 3 }, (_, i) => i + 1)
@@ -156,9 +151,8 @@ export const projectsData: Project[] = [
       es: "El equipo necesitaba un único lugar para planificar los sprints y saber quién trabaja en qué. Desarrollé la aplicación en Power Apps con datos en SQL y Dataverse, y automaticé con Power Automate los pasos repetitivos del proceso, de modo que el seguimiento por usuario y por producto quedara centralizado en una sola herramienta.",
       en: "The team needed a single place to plan sprints and know who is working on what. I built the application in Power Apps with data in SQL and Dataverse, and used Power Automate to automate the repetitive steps of the process, so tracking by user and by product lives in one tool.",
     },
-    mediaType: "slideshow",
-    imageUrl: sprintAppSlides[0],
-    slideshowUrls: sprintAppSlides,
+    mediaType: "image",
+    imageUrl: "/projects/images/sprintapp-dashboard.webp",
     tags: ["Power Apps", "Power Automate", "SQL", "Dataverse"],
     category: "Power Platform",
     featured: true,
