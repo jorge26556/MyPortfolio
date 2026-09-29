@@ -13,7 +13,7 @@ export function ProjectsSection() {
   const { t, lang } = useLanguage();
   const [activeCategory, setActiveCategory] = useState<ProjectCategory>("All");
 
-  const categories: ProjectCategory[] = ["All", "Web", "Mobile", "AI", "Power Platform", "Other"];
+  const categories: ProjectCategory[] = ["All", "Web", "Mobile", "AI", "Power Platform"];
 
   const featuredProjects = useMemo(() => projectsData.filter((p) => p.featured), []);
 

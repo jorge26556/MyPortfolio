@@ -17,6 +17,23 @@ const year = (value: string): BilingualText => ({ es: value, en: value });
 
 export const achievementsData: Achievement[] = [
   {
+    id: "ach-aws-ia-sin-limites",
+    title: {
+      es: "IA sin Límites",
+      en: "AI Without Limits (IA sin Límites)",
+    },
+    description: {
+      es: "Ruta de aprendizaje en inteligencia artificial de AWS Entrena LATAM (8.5 h).",
+      en: "AWS Entrena LATAM learning path on artificial intelligence (8.5 h).",
+    },
+    category: "Certification",
+    issuer: {
+      es: "AWS Entrena LATAM",
+      en: "AWS Entrena LATAM",
+    },
+    date: { es: "Ago 2026", en: "Aug 2026" },
+  },
+  {
     id: "ach-yellow-belt",
     title: {
       es: "Six Sigma Yellow Belt",
