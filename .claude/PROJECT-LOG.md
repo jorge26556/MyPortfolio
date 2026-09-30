@@ -113,3 +113,23 @@ against dark wash out on white and need a darker light-mode partner.
 `SectionHeading` (`src/components/ui/section-heading.tsx`). Six sections had
 drifted into four different heading treatments and three accent-rule colours.
 Add new sections through it rather than hand-rolling a heading.
+
+## The site lives at myportfolio.dyangotech.com, not dyangotech.com
+
+`dyangotech.com` is a separate DyangoTech agency site. The GitHub Pages custom
+domain for this repo is `myportfolio.dyangotech.com`, and `SITE_URL`, `CNAME`,
+`sitemap.xml`, `robots.txt` and the OG image must all use it.
+
+**Why it matters:** they pointed at the bare domain until 2026-09, so canonical
+URLs and OG metadata attributed the portfolio to the agency site.
+
+## No captures of employer systems
+
+Power Platform projects (SprintApp, Billing App) were built at Teleperformance.
+Each gets one image with no coworker names, org-unit codes, internal project
+names, employer logo or copyright footer. The original slideshow exposed all of
+those; it and ~110 raw captures were purged from git history (filter-branch +
+force push) in 2026-09.
+
+**Before adding any work screenshot,** check it for the above, and keep raw
+captures out of the repo entirely — the repo is public, so history is public.

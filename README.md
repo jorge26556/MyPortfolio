@@ -1,6 +1,6 @@
 # Portafolio — Jorge Gaitán
 
-Portafolio personal publicado en **[dyangotech.com](https://dyangotech.com)**.
+Portafolio personal publicado en **[myportfolio.dyangotech.com](https://myportfolio.dyangotech.com)**.
 
 Next.js 16 (App Router) exportado como sitio estático y servido desde GitHub Pages.
 

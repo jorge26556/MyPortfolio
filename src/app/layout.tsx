@@ -12,7 +12,7 @@ const inter = Inter({
   display: "swap",
 });
 
-const SITE_URL = "https://dyangotech.com";
+const SITE_URL = "https://myportfolio.dyangotech.com";
 const TITLE = `${profileData.name} — AI Engineer & Full-Stack Developer`;
 const DESCRIPTION =
   "Portafolio de Jorge Gaitán, AI Engineer y Full-Stack Developer. Agentes de IA con MCP, automatización de procesos con Power Platform, Google Workspace y RPA, y plataformas web con React, Next.js y Django.";

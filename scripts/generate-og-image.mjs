@@ -16,7 +16,7 @@ const OUT = path.join(ROOT, "public/og-image.png");
 const NAME = "Jorge Gaitán";
 const ROLE = "AI Engineer &amp; Full-Stack Developer";
 const TAGLINE = "Agentes de IA, automatización y plataformas web";
-const DOMAIN = "dyangotech.com";
+const DOMAIN = "myportfolio.dyangotech.com";
 
 const FONT = "Segoe UI, Inter, Helvetica Neue, Arial, sans-serif";
 

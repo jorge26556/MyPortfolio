@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://dyangotech.com/sitemap.xml
+Sitemap: https://myportfolio.dyangotech.com/sitemap.xml
