@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { useLanguage } from "@/components/providers/language-provider";
 import { cn } from "@/lib/utils";
 
-export type ProjectCategory = "All" | "Web" | "Mobile" | "AI" | "Design" | "Power Platform" | "Other";
+export type ProjectCategory = "All" | "Web" | "Mobile" | "AI" | "Automation" | "Other";
 
 interface ProjectFiltersProps {
   categories: ProjectCategory[];

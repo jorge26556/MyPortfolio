@@ -51,6 +51,23 @@ export const achievementsData: Achievement[] = [
     date: { es: "Mar–Abr 2026", en: "Mar–Apr 2026" },
   },
   {
+    id: "ach-7",
+    title: {
+      es: "Web Development Bootcamp",
+      en: "Web Development Bootcamp",
+    },
+    description: {
+      es: "Formación en desarrollo web completo.",
+      en: "Comprehensive web development training.",
+    },
+    category: "Certification",
+    issuer: {
+      es: "Udemy",
+      en: "Udemy",
+    },
+    date: year("2026"),
+  },
+  {
     id: "ach-1",
     title: {
       es: "Creación de páginas web",
@@ -151,23 +168,6 @@ export const achievementsData: Achievement[] = [
       en: "Open English",
     },
     date: year("2020"),
-  },
-  {
-    id: "ach-7",
-    title: {
-      es: "Web Development Bootcamp",
-      en: "Web Development Bootcamp",
-    },
-    description: {
-      es: "Formación en desarrollo web completo.",
-      en: "Comprehensive web development training.",
-    },
-    category: "Certification",
-    issuer: {
-      es: "Udemy",
-      en: "Udemy",
-    },
-    date: inProgress,
   },
   {
     id: "ach-8",

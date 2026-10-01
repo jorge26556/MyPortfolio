@@ -17,7 +17,7 @@ export interface Project {
   slideshowUrls?: string[];
   mediaCaption?: BilingualText;
   tags: string[];
-  category: "Web" | "Mobile" | "AI" | "Power Platform" | "Other";
+  category: "Web" | "Mobile" | "AI" | "Automation" | "Other";
   liveUrl?: string;
   githubUrl?: string;
   featured: boolean;
@@ -154,27 +154,27 @@ export const projectsData: Project[] = [
     mediaType: "image",
     imageUrl: "/projects/images/sprintapp-dashboard.webp",
     tags: ["Power Apps", "Power Automate", "SQL", "Dataverse"],
-    category: "Power Platform",
+    category: "Automation",
     featured: true,
   },
   {
     id: "proj-11",
     title: {
-      es: "Facturación App",
-      en: "Billing App",
+      es: "Sistema de alertas automatizadas",
+      en: "Automated Alerting System",
     },
     shortDescription: {
-      es: "App empresarial en Power Apps para gestionar provisiones y facturas: datos de clientes, exportación y continuidad del flujo hacia el gestor de facturación externo.",
-      en: "Enterprise Power Apps application for managing provisions and invoices: client data, export, and a continuous handoff to the external billing system.",
+      es: "Sistema en Python que consulta SQL Server, genera gráficas y reportes en Excel por cliente y los envía automáticamente por correo y Microsoft Teams a clientes de varios países.",
+      en: "Python system that queries SQL Server, generates per-client charts and Excel reports, and delivers them automatically by email and Microsoft Teams to clients in several countries.",
     },
     longDescription: {
-      es: "El proceso de provisiones y facturación pasaba por varias personas y herramientas. Construí una aplicación en Power Apps sobre SQL y Dataverse que concentra la información de clientes y provisiones, permite exportar los datos y, con Power Automate, continúa el flujo hacia el gestor de facturación externo. Las capturas públicas usan datos de demostración.",
-      en: "The provisioning and billing process went through several people and tools. I built a Power Apps application on SQL and Dataverse that brings client and provision data together, supports data export, and uses Power Automate to hand the workflow off to the external billing system. Public screenshots use demo data.",
+      es: "Los clientes debían recibir reportes periódicos de infracciones y prepararlos a mano tomaba tiempo y generaba errores. Desarrollé en Python un proceso que consulta la base de datos, genera las gráficas y el Excel de cada cliente con pandas y matplotlib, y los entrega por correo y Teams según un calendario. Los destinatarios por país se gestionan en una app que migré de Power Apps a Google Apps Script y Google Sheets, sincronizada con SQL Server. Es un sistema interno de empresa, por eso se muestra un diagrama del flujo en lugar de capturas.",
+      en: "Clients needed periodic infraction reports, and building them by hand was slow and error-prone. I built a Python process that queries the database, generates each client's charts and Excel file with pandas and matplotlib, and delivers them by email and Teams on a schedule. Recipients by country are managed in an app I migrated from Power Apps to Google Apps Script and Google Sheets, synced with SQL Server. It is an internal company system, so a flow diagram is shown instead of screenshots.",
     },
     mediaType: "image",
-    imageUrl: "/projects/images/FacturacionAPP.webp",
-    tags: ["Power Apps", "Power Automate", "SQL", "Dataverse"],
-    category: "Power Platform",
+    imageUrl: "/projects/images/alert-system.webp",
+    tags: ["Python", "SQL Server", "pandas", "matplotlib", "Google Apps Script", "Google Sheets", "Microsoft Teams"],
+    category: "Automation",
     featured: false,
   },
   {
