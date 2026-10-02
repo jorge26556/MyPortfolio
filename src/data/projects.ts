@@ -198,4 +198,24 @@ export const projectsData: Project[] = [
     category: "Web",
     featured: true,
   },
+  {
+    id: "proj-13",
+    title: {
+      es: "DyangoTech",
+      en: "DyangoTech",
+    },
+    shortDescription: {
+      es: "Sitio web de DyangoTech, el estudio que fundé en 2026 para llevar automatización, software a medida, agentes de IA y páginas web a pymes.",
+      en: "Website for DyangoTech, the studio I founded in 2026 to bring automation, custom software, AI agents, and websites to small and mid-sized businesses.",
+    },
+    longDescription: {
+      es: "Fundé DyangoTech para ofrecer a pymes lo que hago en entornos corporativos: automatizar procesos, construir herramientas a medida e integrar Microsoft 365 y Google Workspace. Diseñé y desarrollé el sitio de principio a fin: posicionamiento de la oferta, catálogo de servicios, proyectos y planes, versión bilingüe, SEO y publicación en GitHub Pages con dominio propio.",
+      en: "I founded DyangoTech to offer small and mid-sized businesses what I do in corporate environments: process automation, custom tools, and Microsoft 365 and Google Workspace integrations. I designed and built the site end to end: offer positioning, service catalog, projects and plans, a bilingual version, SEO, and deployment on GitHub Pages with a custom domain.",
+    },
+    mediaType: "image",
+    imageUrl: "/projects/images/dyangotech.webp",
+    tags: ["HTML", "CSS", "JavaScript", "SEO", "GitHub Pages"],
+    category: "Web",
+    featured: false,
+  },
 ];
